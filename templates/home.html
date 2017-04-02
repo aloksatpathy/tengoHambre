@@ -1,0 +1,148 @@
+
+
+            <div class="container">
+                <div  id="top" class="callbacks_container">
+                <ul class="rslides" id="slider">
+                    <li>
+
+                            <div class="banner-text">
+                                <h2 style ="color:#213300">Dont try to tell me </h2>
+                                    <h3 style ="color:#213300">Hunger is not an emotion</h3>
+
+                            </div>
+
+                    </li>
+                    <li>
+
+                            <div class="banner-text">
+                                <h3>There are many  </h3>
+                            <p>Popular belief Contrary to , Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+
+
+                            </div>
+
+                    </li>
+                    <li>
+                            <div class="banner-text">
+                                <h3>Sed ut perspiciatis</h3>
+                            <p>Lorem Ipsum is not simply random text. Contrary to popular belief, It has roots in a piece of classical Latin literature from 45 BC.</p>
+
+
+                            </div>
+
+                    </li>
+                </ul>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+        <!--content-->
+        <div class="container">
+            <div class="cont">
+                <div class="content">
+                    <div class="content-top-bottom">
+                        <h2>RECIPES</h2>
+                        <div class="col-md-8 men">
+                            <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive" src="images\Snack1.jpg" alt="">
+                                <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>Best Recipe of the Week</span>
+                                                    </h3>
+                                                </div>
+                            </a>
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md1 menup">
+                                <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive" src="images\snack 3.jpg" alt="">
+                                    <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>Trending Snack</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+
+                            </div>
+                            <div class="col-md1 mendw">
+                                <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive" src="images\snack 4.jpg" alt="">
+                                    <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>New Entry</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="content-top">
+                        <h1>CHEF CONNECT</h1>
+                        <div class="col-md-8 men">
+                            <a href="chefcarousel.html" class="b-link-stripe b-animate-go"><img class="img-responsive" src="images\chef 3.jpg" alt="">
+                                <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>Best Chef of the Week</span>
+                                                    </h3>
+                                                </div>
+                            </a>
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md1 menup">
+                                <a href="chefcarousel.html" class="b-link-stripe b-animate-go"><img class="img-responsive" src="images\chef1.jpg" alt="">
+                                    <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>Trending Chef</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+
+                            </div>
+                            <div class="col-md1 mendw">
+                                <a href="chefcarousel.html" class="b-link-stripe b-animate-go"><img class="img-responsive" src="images\chef 2.jpg" alt="">
+                                    <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>New Entry</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+<script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="js/memenu.js"></script>
+<script>
+            jQuery(document).ready(function ($) {
+                $('[id^=carousel-selector-]').click(function () {
+                    var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+                    var id = parseInt(id);
+                    $('.thumbnail').removeClass('active');
+                    $(this).addClass('active');
+                    $('#main-slider').carousel(id);
+                });
+            }); </script>
+    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+                  <script>
+                    $(function () {
+                      $("#slider").responsiveSlides({
+                        auto: true,
+                        nav: true,
+                        speed: 500,
+                        namespace: "callbacks",
+                        pager: true,
+                      });
+                    });
+                  </script>
