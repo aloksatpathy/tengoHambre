@@ -32,15 +32,15 @@ def signin():
 
 			user = User.query.filter_by(email=email).first()
 
-			print(user.check_password(password))
-			print(user.firstName)
+			#print(user.check_password(password))
+			#print(user.firstName)
 
 			if user is not None and user.check_password(password):
 				session['email'] = form.email.data
-				invalidSignin=False
+				session['firstName'] = user.firstName
 				return redirect(url_for('index'))
 			else:
-				invalidSignin=True
+				error="Invalid Email ID or Password"
 				return redirect(url_for('signin'))
 
 	elif request.method == 'GET':
@@ -72,6 +72,7 @@ def createUser():
 			db.session.commit()
 
 			session['email'] = newuser.email
+			session['firstName'] = newuser.firstName
 			return redirect(url_for('index'))
 
 	elif request.method == 'GET':
@@ -83,6 +84,7 @@ def createUser():
 @app.route("/logout")
 def logout():
 	session.pop('email', None)
+	session.pop('firstName', None)
 	return redirect(url_for('index'))
 
 
