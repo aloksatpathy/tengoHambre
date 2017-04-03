@@ -1,163 +1,51 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-	<title>Sign Up</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	 <meta name="keywords" content="Tango Hambre template, Recipes, 15 minute recipes, quick food, healthy food, order food online, low price" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <meta name="description" content="Quick food for students">
-    <meta name="author" content="Alok,Dhruv,Divya,Nikitha,Titto">
-    <title>Home | Tengo Hambre</title>
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/font-awesome.min.css" rel="stylesheet">
-    <link href="static/css/animate.min.css" rel="stylesheet">
-    <link href="static/css/prettyPhoto.css" rel="stylesheet">
-    <link href="static/css/main.css" rel="stylesheet">
-    <link href="static/css/responsive.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->
-    <link rel="shortcut icon" href="static/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="static/images/ico/apple-touch-icon-57-precomposed.png">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
-    <!-- Custom Theme files -->
-    <!--theme-style-->
-    <link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <!--//theme-style-->
-
-    <link href="static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" type="text/css" href="static/css/signin.css" />
-
-
-
-    <style>
-        .hide-bullets {
-            list-style: none;
-            margin-left: -40px;
-            margin-top: 20px;
-        }
-
-        .thumbnail > img, .thumbnail a > img {
-            opacity: 0.3;
-        }
-
-        .thumbnail > img, .thumbnail a > img {
-            opacity: 0.3;
-        }
-
-        .thumbnail.active > img {
-            opacity: 1;
-        }
-    </style>
-</head>
-
-<body>
-    <header id="header">
-        <nav class="navbar navbar-inverse" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only"> Toggle navigation</span>
-                        <span class="icon-bar"> </span> <span class="icon-bar"> </span>
-                        <span class="icon-bar"> </span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="static/images/logo.png" alt="logo">
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="index.html"> Home</a>
-                        </li>
-                        <li >
-                            <a href="demo.html"> Recipes</a>
-                        </li>
-                        <li >
-                            <a href="chefcarousel.html"> Chef Connect</a>
-                        </li>
-                        <li>
-                            <a href="portfolio.html"> Contact Us</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav pull-right">
-                        <li class=" dropdown">
-                            <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as  <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Change Password</a></li>
-                                <li><a href="#">My Profile</a></li>
-                            </ul>
-                        </li>
-                        <li class=""><a href="#">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header> 
-	<div id="page-wrap">
-	<fieldset>
-			<legend><b>Enter your credentials</b></legend>
-		<div id="contact-area">
-			<form>
-				<label for="Name">Username:</label><br>
-				<input type="text" name="Name" id="Name" /><br>
-				
-				<label for="Passowrd">Password:</label><br>
-				<input type="text" name="Password" id="Password" />
-				<p>Minimum 6 characters</p>
-
-				<input type="submit" name="submit" value="Submit" class="submit-button" />
-				
-			</form>
-			
-			<div id ="New_user">
-					<label for="New_User">New User?</label>
-					<input type="submit" name="Create" value="Create" class="create-button" />
-				</div>
-			
-			<div style="clear: both;"></div>
-			</fieldset>
-		</div>
-	
-	</div>
-    <footer id="footer" class="midnight-blue">
+{% block content %} 
         <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    &copy; 2017 <a target="_blank" href="#" title="Tengo Hambre == I'm hungry">Group 5, IS Design </a>
-                    <div class="top-number">
-                        <p> <i class="fa fa-phone-square"> </i> +0123 456 70 90</p>
-                    </div>
-                </div>
-                
-                <div class="col-sm-6 col-xs-8 pull-right">
-                    <div class="social">
-                        <ul class="social-share">
-                            <li> <a href="#"> <i class="fa fa-facebook"> </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-twitter"> </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-linkedin"> </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-dribbble"> </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-skype"> </i> </a> </li>
-                        </ul>
-                        <div class="search">
-                            <form role="form">
-                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                <i class="fa fa-search"> </i>
-                            </form>
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" align="center">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                        <h3 class="panel-title">Please enter your credentials</h3>
                         </div>
+                        <div class="panel-body">
+                        <form method="POST" action="/signin">
+                        {{ form.hidden_tag() }}
+
+                                    <div class="form-group">
+                                        {% if form.email.errors %}
+                                            {% for error in form.email.errors %}
+                                                <p class="error-message">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {{ form.email(class="form-control input-sm", placeholder="Email ID") }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {% if form.password.errors %}
+                                            {% for error in form.password.errors %}
+                                                <p class="error-message">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {{ form.password(class="form-control input-sm", placeholder="Password") }}
+                                    </div>
+
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                {{ form.submit(class="btn-primary") }}
+                            </div>
+                        
+                        </form>
                     </div>
+                    <div id ="New_user">
+                        <label for="New_User">New User?</label>
+                        <a class="create-button" href="{{ url_for('createUser') }}">Create</a>
+                        <!--<input href="{{ url_for('createUser') }}" type="submit" name="Create" value="Create" class="create-button" />-->
+                </div>
                 </div>
             </div>
         </div>
-    </footer>
-</body>
+    </div>
 
-</html>
+{% endblock %}

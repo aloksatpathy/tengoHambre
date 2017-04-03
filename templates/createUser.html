@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block content %} 
+    <div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" align="center">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                        <h3 class="panel-title">Create New User</h3>
+                        </div>
+                        <div class="panel-body">
+                        <form method="POST" action="/createUser">
+                        {{ form.hidden_tag() }}
+                            <div class="form-group">
+
+                                {% if form.firstName.errors %}
+                                    {% for error in form.firstName.errors %}
+                                        <p class="error-message">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {{ form.firstName(class="form-control input-sm", placeholder="First Name") }}
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                {% if form.lastName.errors %}
+                                    {% for error in form.lastName.errors %}
+                                        <p class="error-message">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {{ form.lastName(class="form-control input-sm", placeholder="Last Name") }}
+                            </div>
+
+
+                            <div class="form-group">
+
+                                {% if form.email.errors %}
+                                    {% for error in form.email.errors %}
+                                        <p class="error-message">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {{ form.email(class="form-control input-sm", placeholder="Email ID") }}
+                            </div>
+
+
+                            <div class="form-group">
+
+                                {% if form.password.errors %}
+                                    {% for error in form.password.errors %}
+                                        <p class="error-message">{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {{ form.password(class="form-control input-sm", placeholder="Password") }}
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                {{ form.submit(class="btn-primary") }}
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+            <!--
+            <div id="FullName">
+                <label for="FirstName">FirstName:</label>
+                <label for="LastName">LastName:</label><br>
+                
+                <input type="text" name="FirstName" class="FirstName" />
+                <input type="text" name="LastName" class="LastName" /><br>
+            </div>
+            <div id="Email">
+                <label for="Email">Email Id:</label><br>
+                <input type="email" name="email-address"><br>
+                <label for="Email">Enter your password:</label><br>
+                <input type="email" name="email-address">
+            </div>
+            <label for="Chef">Are you a Chef?</label>
+            <input type="radio" name="Food" value="Food"><span style="font-family:Verdana, Geneva, sans-serif; font-size:1.3em;"> Sell Food</span>
+            <input style="position:relative; right: 15%;"type="radio" name="Food" value="Food"><span style="font-family:Verdana, Geneva, sans-serif; font-size:1.3em;position:relative; right: 15%;"> No</span>
+            </form>     
+            <div style="clear: both;"></div>
+        </div>
+        <img src="images/goku1.png" alt="Goku Welcoming" style="width:40%;height:40%; float:left;">
+        <div id="Address-area">
+                <label for="Address">Address Line 1:</label><br>
+                <input type="text" name="Address-1"><br>
+                <label for="Address2">Address Line 2:</label><br>
+                <input type="text" name="Address-2"><br>
+                <label style="padding-right:15%;" for="City">City:</label>
+                <label for="State">State/Province:</label><br>
+                <input style="width:15%;margin-right:2%;" type="text" name="City">
+                <select name="State">
+                <option value="Texas" selected>Texas</option>
+                <option value="California">California</option>
+                <option value="New York">New York</option>
+                </select> <br>
+                <label style="padding-right:8%;" for="Zip">Postal Code:</label>
+                <label for="Country">Country:</label><br>
+                <input style="width:15%;margin-right:2%;" type="tel" name="Zip">
+                <select name="Country">
+                <option value="United States" selected>United States</option>
+                <option value="Brazil">Brazil</option>
+                <option value="India">India</option>
+                </select> <br>
+                <label for="Phone">Phone Number:</label><br>
+                <input style="width:5%" type="tel" name="Phone">
+                <span><b> --- </b></Span>
+                <input style="width:15%; margin: 0px 0px 0px 0px" type="tel" name="Phone"><br>
+                <label style="margin: 0px 0px 2% 44%;" for="Phone">Upload Image:</label><br>
+                <input style="margin: 0px 0px 2% 44%;" type="file" name="fileToUpload" id="fileToUpload">
+        </div>
+        <div id="Submit">
+        <input type="submit" name="submit" value="Submit" class="submit-button" />
+        </div> -->
+
+
+{% endblock %}
