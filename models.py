@@ -10,12 +10,26 @@ class User(db.Model):
 	lastName = db.Column(db.String(30))
 	email = db.Column(db.String(30), primary_key=True)
 	password = db.Column(db.String(54))
+	addressLine1 = db.Column(db.String(50))
+	addressLine2 = db.Column(db.String(50))
+	city = db.Column(db.String(30))
+	state = db.Column(db.String(30))
+	zipCode = db.Column(db.String(30))
+	country = db.Column(db.String(30))
+	phoneNumber = db.Column(db.String(30))
 
-	def __init__(self, firstName, lastName, email, password):
+	def __init__(self, firstName, lastName, email, password, addressLine1, addressLine2, city, state, zipCode, country, phoneNumber):
 		self.firstName = firstName.title()
 		self.lastName = lastName.title()
 		self.email = email.lower()
 		self.set_password(password)
+		self.addressLine1 = addressLine1
+		self.addressLine2 = addressLine2
+		self.city = city
+		self.state = state
+		self.zipCode = zipCode
+		self.country = country
+		self.phoneNumber = phoneNumber
 		
 	def set_password(self, password):
 		self.password = hashlib.sha1(password.encode()).hexdigest()

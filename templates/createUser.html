@@ -3,66 +3,170 @@
 {% block content %} 
     <div class="container">
         <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" align="center">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                        <h3 class="panel-title">Create New User</h3>
-                        </div>
-                        <div class="panel-body">
-                        <form method="POST" action="/createUser">
+                <div class="panel-body">
+                    <form method="POST" action="/createUser">
                         {{ form.hidden_tag() }}
                             <div class="form-group">
-
-                                {% if form.firstName.errors %}
-                                    {% for error in form.firstName.errors %}
-                                        <p class="error-message">{{ error }}</p>
-                                    {% endfor %}
-                                {% endif %}
-
-                                {{ form.firstName(class="form-control input-sm", placeholder="First Name") }}
+                                <h3><label style="color:white;">Please enter your details</label> </h3>
                             </div>
 
+                            <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        {% if form.firstName.errors %}
+                            {% for error in form.firstName.errors %}
+                                <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                            {% endfor %}
+                        {% endif %}
+
+                        {{ form.firstName(class="form-control input-sm", placeholder="First Name") }}
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        {% if form.lastName.errors %}
+                            {% for error in form.lastName.errors %}
+                                <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                            {% endfor %}
+                        {% endif %}
+
+                        {{ form.lastName(class="form-control input-sm", placeholder="Last Name") }}
+                    </div>
+                  </div>
+                </div> 
+
+                <div class="form-group">
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.email(class="form-control input-sm", placeholder="Email ID") }}
+                </div>
+
+                <div class="form-group">
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.password(class="form-control input-sm", placeholder="Password") }}
+                </div>
 
 
-                            <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label style="color:white;"">Are you a Chef?</label>
+                    </div>
+                    </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6"> 
+                      <label style="color:white;" class="radio-inline" for="Dinner-0">
+                        <input type="radio" name="Dinner" id="Dinner-0" value="dinner_yes" checked="checked">
+                        Sell Food </label> 
+                        <label style="color:white;" class="radio-inline" for="Dinner-1">
+                        <input type="radio" name="Dinner" id="Dinner-1" value="dinner_no">
+                        No</label>
+                  </div>
+                </div>
 
-                                {% if form.lastName.errors %}
-                                    {% for error in form.lastName.errors %}
-                                        <p class="error-message">{{ error }}</p>
-                                    {% endfor %}
-                                {% endif %}
+                <div class="form-group">
+                    {% if form.addressLine1.errors %}
+                        {% for error in form.addressLine1.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
 
-                                {{ form.lastName(class="form-control input-sm", placeholder="Last Name") }}
-                            </div>
-
-
-                            <div class="form-group">
-
-                                {% if form.email.errors %}
-                                    {% for error in form.email.errors %}
-                                        <p class="error-message">{{ error }}</p>
-                                    {% endfor %}
-                                {% endif %}
-
-                                {{ form.email(class="form-control input-sm", placeholder="Email ID") }}
-                            </div>
+                    {{ form.addressLine1(class="form-control input-sm", placeholder="Address Line 1") }}
+                </div>
 
 
-                            <div class="form-group">
+                <div class="form-group">
+                   {% if form.addressLine2.errors %}
+                        {% for error in form.addressLine2.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
 
-                                {% if form.password.errors %}
-                                    {% for error in form.password.errors %}
-                                        <p class="error-message">{{ error }}</p>
-                                    {% endfor %}
-                                {% endif %}
+                    {{ form.addressLine2(class="form-control input-sm", placeholder="Address Line 2") }}
+                </div>
 
-                                {{ form.password(class="form-control input-sm", placeholder="Password") }}
-                            </div>
 
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                {{ form.submit(class="btn-primary") }}
-                            </div>
-                        
+                <div class="form-group">
+                   {% if form.city.errors %}
+                        {% for error in form.city.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.city(class="form-control input-sm", placeholder="City") }}
+                </div> 
+
+
+                <div class="form-group">
+                   {% if form.state.errors %}
+                        {% for error in form.state.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.state(class="form-control input-sm", placeholder="State") }}
+                </div> 
+
+
+                <div class="form-group">
+                    {% if form.zipCode.errors %}
+                        {% for error in form.zipCode.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.zipCode(class="form-control input-sm", placeholder="Zip Code") }}
+                </div>
+                            
+                <div class="form-group">
+                    {% if form.country.errors %}
+                        {% for error in form.country.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.country(class="form-control input-sm", placeholder="Country") }}
+                </div>
+
+                <div class="form-group">
+                    {% if form.phoneNumber.errors %}
+                        {% for error in form.phoneNumber.errors %}
+                            <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.phoneNumber(class="form-control input-sm", placeholder="Phone Number: (xxx)-xxx-xxxx") }}
+                </div>
+
+
+            <div class="row">
+                  <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="form-group">
+                      <label style="color:white; padding-top: 0.2em;">Upload Img:</label>
+                    </div>
+                  </div>
+                  <div class="col-xs-8 col-sm-8 col-md-8">
+                    <div class="input-group">
+                           <span style="color:white;" class="btn btn-file">
+                             <input type="file" id="imgInp">
+                      </span>
+                    </div>
+                  </div>
+              <img id='img-upload'/>
+              </div>
+
+                            {{ form.submit(class="btn btn-info btn-block", style="background-color:#EF5F21; border:none;") }}
+
                         </form>
                     </div>
                 </div>

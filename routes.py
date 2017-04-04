@@ -32,8 +32,8 @@ def signin():
 
 			user = User.query.filter_by(email=email).first()
 
-			#print(user.check_password(password))
-			#print(user.firstName)
+			print(user.check_password(password))
+			print(user.firstName)
 
 			if user is not None and user.check_password(password):
 				session['email'] = form.email.data
@@ -67,7 +67,7 @@ def createUser():
 		if form.validate() == False:
 			return render_template("createUser.html", form=form)
 		else:
-			newuser=User(form.firstName.data, form.lastName.data, form.email.data, form.password.data)
+			newuser=User(form.firstName.data, form.lastName.data, form.email.data, form.password.data, form.addressLine1.data, form.addressLine2.data, form.city.data, form.state.data, form.zipCode.data, form.country.data, form.phoneNumber.data)
 			db.session.add(newuser)
 			db.session.commit()
 

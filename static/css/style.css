@@ -2,6 +2,18 @@ body{
 	background-image: url("../images/Dark-wood-flooring.png");
 	font-family: 'Roboto', sans-serif;
 }
+
+/*Testing*/
+.centered-form{
+	margin-top: 5%;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+/*Testing end*/
+
  a{
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -17,14 +29,6 @@ h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;
 }
 /*----*/
-.centered-form{
-	margin-top: 60px;
-}
-
-.centered-form .panel{
-	background: rgba(255, 255, 255, 0.8);
-	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
-}
 .itemContainer{
 			width:100%;
 			float:left;
@@ -48,6 +52,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 			float:left;
 			margin: 5px 20px 5px 20px ;
 		}
+
 .item_add {
   color: #fff;
   border:none;
@@ -474,16 +479,24 @@ height: 35px;
 .mendw{
 	padding: 15px 0 0 0;
 }
+.content-top-bottom{
+	background-color: #ffffff;
+	padding-bottom: 1.5em;	
+  	font-family: 'benton sans', sans-serif;
+}
+.dropdown{
+display=none;
+}
 .content-top-bottom h2{
 	color: #6e7786;
   	font-size: 1.7em;
-  	font-family: 'Lato', sans-serif;
+  	font-family: 'benton sans', sans-serif;
   	font-weight: 600;
   	margin-top: 1.5em;
-  	margin-bottom: 1.5em;
+  	padding: 1.5em;
   	text-align: center;
     text-transform: uppercase;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 .b-link-stripe{
 	position:relative;
@@ -2921,4 +2934,295 @@ h3.b-animate{
 .amet-sed {
     width: 100%;
 }
+}
+
+/*Titto page styling*/
+.page-wrap p {
+	font-size: 1.2em;
+	padding-left:20%;
+}
+
+
+.page-wrap {
+	width: 400px;
+	max-width: 100%;
+	margin: 12.5em auto;
+	min-height: 300px;
+	height: auto;
+	font-size: 0.8em;
+}
+
+.page-wrap label {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.2em;
+	margin-left: 20%;
+	width: 100px;
+	padding-top: 5px;
+}
+
+#contact-area {
+	max-width: 100%;
+	margin: 50px auto;
+	padding: auto;
+	position: relative;
+}
+
+
+#contact-area input {
+	padding: 5px;
+	width: 200px;
+	max-width: 200px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.4em;
+	margin: 0px 0px 2% 20%;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+}
+
+#contact-area input.submit-button {
+	width: 100px;
+	margin-top: 3%;
+	margin-left: 20%;
+	border-radius: 6px;
+}
+
+
+input.submit-button:hover {
+    background-color: #228B22;
+    color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#New_user {
+	max-width: 100%;
+	max-height: 50%;
+	margin-top: 15px;
+}
+	
+#contact-area input.create-button {
+	width: 100px;
+	margin-left: 25%;
+	border-radius: 6px; 
+}
+
+input.create-button:hover {
+    background-color: #228B22;
+    color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.page-wrap legend {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.3em;
+	padding-top: 2em;
+	margin: auto; 
+} 
+
+.page-wrap fieldset{
+	max-width: 100%;
+	border-radius: 6px;
+	background-color: white;
+}
+/*End of signon page styling*/
+/*Create user styling start*/
+#page-wrap1 {
+	width: 800px;
+	height: 1000px;
+	max-width: 100%;
+	margin: 5em auto 12.5em ;
+	min-height: 800px;
+	font-size: 0.7em;
+}
+
+#page-wrap1 p {
+	font-size: 1.2em;
+	padding-left:20%;
+}
+
+#page-wrap1 legend {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.4em;
+	padding-top: 2em;
+	margin: auto; 
+} 
+
+#page-wrap1 fieldset{
+	max-width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	background-color: white;
+}
+
+#FullName label{
+	float:left;
+	width: 100px;
+	padding-bottom: 5px;
+}
+
+
+#FullName input.LastName {
+ position: relative;
+ right: 15%;
+}
+
+#Email input {
+	width: 300px;
+	padding-bottom: 5px;
+}
+
+#contact-area1 {
+	max-width: 100%;
+	margin: 50px auto;
+	padding: auto;
+	position: relative;
+}
+
+
+#contact-area1 input {
+	padding: 5px;
+	max-width: 400px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.4em;
+	margin: 0px 0px 2% 20%;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+}
+
+#Submit input.submit-button {
+	width: 30%;
+	margin: 10% 35%;
+	padding: 0.8%;
+	border-radius: 6px;
+	font-size: 1.3em;
+}
+
+
+#contact-area1 label {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.3em;
+	margin-left: 20%;
+}
+
+
+#Address-area label {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.3em;
+	margin: 0px 0px 2% 4%;
+}
+
+#Address-area input {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.3em;
+	width: 35%;
+	padding: 5px;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+	margin: 0px 0px 2% 4%;
+}
+
+#Address-area select{
+	width:16%;
+	padding: 5px;
+	font-size: 1.3em;
+	margin: 0px 0px 2% 4%;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+}
+/*Create user styling end*/
+/*Add recipe*/
+#page-wrap2 {
+	width: 800px;
+	height: 800px;
+	max-width: 100%;
+	margin: 5em auto 12.5em ;
+	min-height: 800px;
+	font-size: 0.7em;
+}
+
+#page-wrap2 p {
+	font-size: 1.2em;
+	padding-left:20%;
+}
+
+#page-wrap2 legend {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.5em;
+	padding-top: 2em;
+	margin: auto;
+} 
+
+#page-wrap2 fieldset{
+	max-width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	background-color: white;
+} 
+
+#Text input {
+	width: 300px;
+	padding-bottom: 5px;
+}
+
+#contact-area2 {
+	max-width: 100%;
+	margin: 50px auto;
+	padding: auto;
+	position: relative;
+}
+
+
+#contact-area2 label {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.3em;
+	margin-left: 20%;
+}
+
+#contact-area2 input {
+	padding: 5px;
+	max-width: 400px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.4em;
+	margin: 0px 0px 2% 20%;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+}
+
+#contact-area2 textarea {
+	padding: 5px;
+	width:60%;
+	height:10em;
+	max-width: 600px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1.4em;
+	margin: 0px 0px 2% 20%;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+}
+
+#contact-area2 select{
+	width:16%;
+	padding: 1em 1em;
+	font-size: 1.4em;
+	margin: 0px 0px 2% 20%;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+}
+
+#Submit1 input.submit-button {
+	width: 30%;
+	margin: 10% 35%;
+	padding: 0.8%;
+	border-radius: 6px;
+	font-size: 1.3em;
+}
+
+/*End add recipe styling*/
+#Loading {
+	max-width: 100%;
+	max-height: 100%;
+	margin: 15% 35% 80%;
+	font-size: 2em;
+	color:white ;
+
 }
