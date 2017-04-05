@@ -82,7 +82,6 @@ a:hover, a:focus {
 }
 
 .dropdown{
-    display: none !important;
 }
 .dropdown-menu {
     margin-top: -1px;
