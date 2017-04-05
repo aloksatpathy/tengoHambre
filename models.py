@@ -17,8 +17,9 @@ class User(db.Model):
 	zipCode = db.Column(db.String(30))
 	country = db.Column(db.String(30))
 	phoneNumber = db.Column(db.String(30))
+	imageURL = db.Column(db.String(300))
 
-	def __init__(self, firstName, lastName, email, password, addressLine1, addressLine2, city, state, zipCode, country, phoneNumber):
+	def __init__(self, firstName, lastName, email, password, addressLine1, addressLine2, city, state, zipCode, country, phoneNumber, imageURL):
 		self.firstName = firstName.title()
 		self.lastName = lastName.title()
 		self.email = email.lower()
@@ -30,6 +31,7 @@ class User(db.Model):
 		self.zipCode = zipCode
 		self.country = country
 		self.phoneNumber = phoneNumber
+		self.imageURL = imageURL
 		
 	def set_password(self, password):
 		self.password = hashlib.sha1(password.encode()).hexdigest()

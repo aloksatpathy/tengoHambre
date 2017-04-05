@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block content %}             
+                
+    <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4" style="width:100%; height:25%;">
+            <div class="well well-sm">
+                <div class="row">
+                    {% for row in chef %}
+                    <div class="col-sm-6 col-md-4">
+                        <img src="{{ row[9] }}" alt="" class="img-rounded img-responsive" id="chefImage" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4 id="ChefNameId">{{ row[0] }} {{ row[1] }}</h4>
+						</br>
+                        <small><cite title="AddressLine1" id="addressline1">{{ row[3] }} </cite></small></br>
+						<small><cite title="AddressLine2" id="addressline2">{{ row[4] }} </cite></small></br>
+                        <small><cite title="City" id="City">{{ row[5] }} </cite></small></br>
+						<small><cite title="StateZipCode" id="StateZipCode">{{ row[6] }} - {{ row[7] }} </cite></small>
+							</br></br>
+                            <i class="glyphicon glyphicon-envelope"></i>{{ row[2] }}
+							</br>
+                            <i class="glyphicon glyphicon-phone"></i>{{ row[8] }}
+                          
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+               
+                
+<div class="container">
+                        <!--<div class="row slide-margin">
+                            
+                            <!--<div class="items">
+							<ul class="" id="">
+							<li> <img src="images/slider/img1.jpg" class="img-rounded" style="height: 250px" class="img-responsive"> </li>
+                            <li> <img src="images/slider/img1.jpg" class="img-rounded" style="height: 250px" class="img-responsive"> </li>
+                            <li> <img src="images/slider/img1.jpg" class="img-rounded" style="height: 250px" class="img-responsive"> </li>
+							</ul>
+                                
+                            </div>
+							</div>-->
+			
+<div class="container">
+<div class="panel panel-default" style="text-align:center">
+                    <h2>Entrees</h2>
+</div>
+<div class="row">
+    {% for row in rs %}
+          <div class="col-md-3">
+            <div class="img-rounded">
+              
+                <img src="{{row[1]}}" id="ChefprofileRecipe" alt="salad" class="well" style="height:100%; width:100%">
+                <div class="caption" id="item1price" style="margin-bottom:25%">
+        			<p style="color:#ffc000" id="Itemname"><b>{{ row[0] }}</b></p>
+                  <p style="color:#ffc000" id="ItemPrice" >Price: ${{ row[2] }}</p>
+                </div>
+              
+            </div>
+          </div>
+    {% endfor %}
+</div>
+    <div class="col-md-12 text-center" style="margin-bottom:5%">
+        <a href="{{ url_for('AddDish') }}"><button type="button" id="MoreItems" class="btn btn-warning"> Add Entree</button></a>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+<div class="panel panel-default" style="text-align:center">
+    <h2>Recipes</h2>
+</div>
+<div class="row">
+{% for row in recipe %}
+      <div class="col-md-3">
+        <div class="img-rounded"> 
+            <img src=" {{ row[1] }} " id="ChefprofileRecipe" alt="salad" class="well" style="height:100%; width:100%">
+            <div class="caption" id="item1price" style="margin-bottom:25%">
+    		<p style="color:#ffc000 " id="Itemname"><b>{{ row[0] }}</b></p>
+            </div>
+        </div>
+      </div>
+{% endfor %}
+
+
+<div class="col-md-12 text-center" style="margin:3% 1%">
+<button type="button" class="btn btn-warning"> Add Items</button>
+</div>
+</div>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
+from flask_wtf.file import FileField
 
 class SigninForm(Form):
 	email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Please enter your valid email address.")])
@@ -19,4 +20,11 @@ class CreateUserForm(Form):
 	zipCode = StringField('Zip Code', validators=[DataRequired("Please enter your Zip Code")])
 	country = StringField('Country', validators=[DataRequired("Please enter your Country")])
 	phoneNumber = StringField('Address Line2', validators=[DataRequired("Please enter your Phone Number")])
+	imageURL = FileField("Example File")
 	submit = SubmitField("Sign Up")
+
+class AddDishForm(Form):
+	entreeName = StringField('Entree Name', validators=[DataRequired("Please enter the Entree name.")])
+	price = StringField('Price in $', validators=[DataRequired("Please enter the price of the Entree.")])
+	imageURL = FileField("Example File")
+	submit = SubmitField("Submit")

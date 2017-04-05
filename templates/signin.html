@@ -15,7 +15,7 @@
                         <div class="form-group">
                                         {% if form.email.errors %}
                                             {% for error in form.email.errors %}
-                                                <p class="error-message">{{ error }}</p>
+                                                <p class="error-message" style="color: #ffc000;">{{ error }}</p>
                                             {% endfor %}
                                         {% endif %}
 
@@ -25,7 +25,7 @@
                         <div class="form-group">
                                         {% if form.password.errors %}
                                             {% for error in form.password.errors %}
-                                                <p class="error-message">{{ error }}</p>
+                                                <p class="error-message" style="color: #ffc000;">{{ error }}</p>
                                             {% endfor %}
                                         {% endif %}
 
