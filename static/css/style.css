@@ -262,7 +262,18 @@ i.inst:hover{
 /*--banner--*/
 /*-- agileits --*/
 .banner{
-	background: url(../images/1.jpg) center no-repeat ; /*Titto*/
+	
+	background: url(../images/1.jpg) center no-repeat ;
+	background-repeat:no-repeat;
+/*background-size:contain;
+/*background-position:center;
+width: 83.33%;
+padding-left:15px;
+padding-right:15px;
+
+min-height: 560px;
+margin-left: auto;
+margin-right: auto*//*Titto*/
 	max-width:100%;
 	min-height: 560px;
 	  position: relative;
@@ -274,7 +285,7 @@ i.inst:hover{
   list-style: none;
   overflow: hidden;
   width: 100%;
-  padding: 0;
+  padding:0;
   margin: 0;
   }
 .rslides li {
@@ -481,6 +492,7 @@ height: 35px;
   	font-family: 'benton sans', sans-serif;
 }
 .dropdown{
+display=none;
 }
 .content-top-bottom h2{
 	color: #6e7786;
@@ -2518,9 +2530,7 @@ a.item_add p.number {
 .content-top-bottom h2 {
     font-size: 1.5em;
 }
-.content {
-    top: -47px;
-}
+
 .flex-control-nav {
     left: 241px ! important;
 }
@@ -2826,10 +2836,6 @@ h3.b-animate{
 }
 .top-in2 {
     min-height: 165px;
-}
-.content {
-    top: -28px;
-    padding: 1em;
 }
 .men1, .men2 {
     float: none;

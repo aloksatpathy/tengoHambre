@@ -367,8 +367,7 @@ input.search-form {
     position: absolute;
     width: 100%;
     display: block !important;
-    height: 550px;
-    -webkit-transition: opacity ease-in-out 500ms;
+     -webkit-transition: opacity ease-in-out 500ms;
     -moz-transition: opacity ease-in-out 500ms;
     -o-transition: opacity ease-in-out 500ms;
     transition: opacity ease-in-out 500ms;
@@ -732,6 +731,7 @@ input.search-form {
         background-color: #e6e6e6;
         border: 0 none;
         box-shadow: none;
+		margin-top:12px;
     }
 
         .panel-default > .panel-heading + .panel-collapse .panel-body {
@@ -2379,8 +2379,8 @@ margin-bottom:25%;
 
 @media (max-width: 978px) {
     .container {
-      padding:0;
-      margin:0;
+     /* padding:0;
+      margin:0;*/
     }
 
     body {
@@ -2421,5 +2421,10 @@ padding:0px
     margin: 0;
 }
 
+.content{
+    position:relative;
+    padding: 2em
+
+}
 
 }

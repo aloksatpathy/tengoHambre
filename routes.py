@@ -3,6 +3,7 @@ from flask_wtf import Form
 from models import db, User
 from forms import SigninForm, CreateUserForm, AddDishForm
 
+#import os
 import config
 
 
@@ -14,16 +15,11 @@ from werkzeug.utils import secure_filename
 
 
 
-
-
 from sqlalchemy import create_engine
 
 connection_string='mysql+pymysql://tengohambre:tengohambre@tengohambredb.cwrcnfg5s8qa.us-west-2.rds.amazonaws.com/tengohambreDB'
 engine = create_engine(connection_string)
 engine.echo=False
-
-
-
 
 
 
@@ -42,26 +38,27 @@ app.secret_key = "development-key"
 
 
 def s3_upload(source_file, upload_dir=None, acl='public-read'):
+	if upload_dir is None:
+		upload_dir = 'tengohambre'
+		#upload_dir = app.config["S3_UPLOAD_DIRECTORY"]
 
-    if upload_dir is None:
-        upload_dir = app.config["S3_UPLOAD_DIRECTORY"]
+	source_filename = secure_filename(source_file.data.filename)
+	source_extension = os.path.splitext(source_filename)[1]
 
-    source_filename = secure_filename(source_file.data.filename)
-    source_extension = os.path.splitext(source_filename)[1]
+	destination_filename = uuid4().hex + source_extension
 
-    destination_filename = uuid4().hex + source_extension
-
-    # Connect to S3 and upload file.
-    conn = boto.connect_s3('AKIAI2LNOMSMYU2TXUZQ','bELRZKesdQfXNgK3rKw4ieJBjIlCxisXk56/jOrL')
+	# Connect to S3 and upload file.
+	conn = boto.connect_s3('AKIAIR4HCWEV7AXHW2AQ','V16xs6ny0l3P/pzioLEdnUH0FkS/5qdfSjoOqgeZ')
+	#conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
 
 
-    b = conn.get_bucket('tengohambre123')
+	b = conn.get_bucket('tengohambreimages')#os.environ.get('S3_BUCKET')
 
-    sml = b.new_key("/".join([upload_dir, destination_filename]))
-    sml.set_contents_from_string(source_file.data.read())
-    sml.set_acl(acl)
+	sml = b.new_key("/".join([upload_dir, destination_filename]))
+	sml.set_contents_from_string(source_file.data.read())
+	sml.set_acl(acl)
 
-    return destination_filename
+	return destination_filename
 
 
 
@@ -88,8 +85,8 @@ def signin():
 
 			user = User.query.filter_by(email=email).first()
 
-			print(user.check_password(password))
-			print(user.firstName)
+			#print(user.check_password(password))
+			#print(user.firstName)
 
 			if user is not None and user.check_password(password):
 				session['email'] = form.email.data
@@ -109,7 +106,7 @@ def signin():
 def recipes():
 	recipes_list = []
 	with engine.connect() as con:
-		rs=con.execute('SELECT * FROM Recipes')
+		rs=con.execute('SELECT recipeName,image  FROM Recipes')
 
 		for row in rs:
 			recipes_list.append(row)
@@ -133,7 +130,7 @@ def createUser():
 		else:
 			output = s3_upload(form.imageURL)
 
-			imageAWS="https://s3.amazonaws.com/tengohambre123/tengohambre/"
+			imageAWS="https://s3-us-west-1.amazonaws.com/tengohambreimages/tengohambre/"
 			imageFullPath = imageAWS + output
 
 			newuser=User(form.firstName.data, form.lastName.data, form.email.data, form.password.data, form.addressLine1.data, form.addressLine2.data, form.city.data, form.state.data, form.zipCode.data, form.country.data, form.phoneNumber.data, imageFullPath)
@@ -161,7 +158,7 @@ def AddDish():
 		else:
 			output = s3_upload(form.imageURL)
 
-			imageAWS="https://s3.amazonaws.com/tengohambre123/tengohambre/"
+			imageAWS="https://s3-us-west-1.amazonaws.com/tengohambreimages/tengohambre/"
 			imageFullPath = imageAWS + output
 
 			sql_query="INSERT INTO Dish (userID, dishName, imageURL, price) VALUES ((SELECT userID FROM User WHERE email='%s'), '%s', '%s', %s)" % (session['email'], form.entreeName.data, imageFullPath, form.price.data)

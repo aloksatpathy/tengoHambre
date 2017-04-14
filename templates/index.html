@@ -1,47 +1,44 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <div class="banner">
+     <div class="header-end">
+            <div class="container">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                  </ol>
 
-        <div class="container">
-            <div  id="top" class="callbacks_container">
-            <ul class="rslides" id="slider">
-                <li>
-
-                        <div class="banner-text">
-                            <h3>Dont try to tell me...</h3>
-                                <p>Hunger is not an emotion</p>
-
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="static/images/slider/image1.jpg" alt="...">
+                        <div class="carousel-caption car-re-posn">
+                             
                         </div>
-
-                </li>
-                <li>
-
-                        <div class="banner-text">
-                            <h3>You want it...  </h3>
-                        <p>We got it!</p>
-
-
+                    </div>
+                    <div class="item">
+                      <img src="static/images/slider/Image2.jpg" alt="...">
+                        <div class="carousel-caption car-re-posn">
+                          
                         </div>
-
-                </li>
-                <li>
-                        <div class="banner-text">
-                            <h3>Tengo Hambre?</h3>
-                        <p>Dive in for something delicious.</p>
-
-
+                    </div>
+                    <div class="item">
+                      <img src="static/images/slider/image4.jpg" alt="...">
+                        <div class="carousel-caption car-re-posn">
+                            
                         </div>
+                    </div>
+                  </div>
 
-                </li>
-            </ul>
+                  <!-- Controls -->
+                                  </div>
+                <div class="clearfix"></div>
             </div>
         </div>
-
-    </div>
-    </div>
-
-    <!--content-->
+        <!--content-->
     <div class="container">
         <div class="cont">
             <div class="content">
