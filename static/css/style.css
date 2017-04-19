@@ -2225,7 +2225,7 @@ a.cpns {
   margin-bottom: 2em;
 }
 .cont {
-    min-height: 106em;
+    min-height: 90vh;
 }
 .b-animate span {
     /*font-size: 1.2em; Removed padding: Alok*/
@@ -2296,12 +2296,12 @@ a.cpns {
 }
 @media(max-width:736px){
 .cont {
-    min-height: 102em;
+    min-height: 90vh;
 }
 }
 @media(max-width:667px){
 .cont {
-    min-height: 96em;
+    min-height: 90vh;
 }
 }
 @media(max-width:640px){
@@ -2357,7 +2357,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   min-height: 204px;
 }
 .cont {
-    min-height: 90em; /*Titto*/
+    min-height: 90vh; /*Titto*/
 }
 .bottom-cd.simpleCart_shelfItem {
     padding-right: 2em;
@@ -2500,7 +2500,7 @@ a.item_add p.number {
   font-size: 1.2em;
 }
 .cont {
-    min-height: 214em;
+    min-height: 90vh;
 }
 .amet-sed {
     width: 50%;
@@ -2557,7 +2557,7 @@ a.item_add p.number {
 }
 @media(max-width:480px){
 .cont {
-    min-height: 178em;
+    min-height: 90vh;
 }
 .b-animate span{		
 			
@@ -2566,17 +2566,17 @@ a.item_add p.number {
 }
 @media(max-width:414px){
 .cont {
-    min-height: 151em;
+    min-height: 90vh;
 }
 }
 @media(max-width:384px){
 .cont {
-    min-height: 139em;
+    min-height: 90vh;
 }
 }
 @media(max-width:375px){
 .cont {
-    min-height: 136em;
+    min-height: 90vh;
 }
 }
 @media(max-width:320px){
