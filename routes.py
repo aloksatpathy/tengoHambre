@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for, flash
+from flask import Flask, render_template, flash, request, session, redirect, url_for, flash
 from flask_wtf import Form
 from models import db, User
 from forms import SigninForm, CreateUserForm, AddDishForm
@@ -88,14 +88,21 @@ def signin():
 			#print(user.check_password(password))
 			#print(user.firstName)
 
-			if user is not None and user.check_password(password):
+			if user is None:
+				passmatch = False
+			else:
+				passmatch = user.check_password(password)
+
+			if user is not None and passmatch == True:
 				session['email'] = form.email.data
 				session['firstName'] = user.firstName
 				return redirect(url_for('index'))
-			else:
-				error="Invalid Email ID or Password"
+			elif user is None and passmatch==False:
+				flash ("Sorry, the username entered is invalid")
 				return redirect(url_for('signin'))
-
+			elif user is not None and passmatch==False:
+				flash ("Sorry, the password entered is invalid")
+				return redirect(url_for('signin'))
 	elif request.method == 'GET':
 		return render_template('signin.html', form=form)
 
@@ -244,7 +251,10 @@ def logout():
 	session.pop('firstName', None)
 	return redirect(url_for('index'))
 
-
+@app.route('/contactus')
+def contactus():
+    
+    return render_template('Contactus.html')
 
 
 if __name__ == "__main__":

@@ -2940,3 +2940,18 @@ h3.b-animate{
     width: 100%;
 }
 }
+
+.Map {
+height: 800px;
+max-height: 100%;
+margin-top: 10%;
+}
+
+.Map1 {
+margin: 0% 5%;
+}
+
+.Map2 {
+margin-left: 5%;
+}
+
