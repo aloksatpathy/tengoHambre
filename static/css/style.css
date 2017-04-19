@@ -216,10 +216,10 @@ i.inst {
 i.inst:hover{
 	opacity:0.5;
 }
-.social {
+/*.social {
     float: left;
     margin: 0.4em 0 0;
-}
+}*/
 .social li {
     display: inline-block;
 }
@@ -2558,6 +2558,10 @@ a.item_add p.number {
 @media(max-width:480px){
 .cont {
     min-height: 178em;
+}
+.b-animate span{		
+			
+	font-size: 1em;		
 }
 }
 @media(max-width:414px){

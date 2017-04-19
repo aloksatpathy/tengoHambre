@@ -2338,7 +2338,8 @@ ul.tag-cloud, ul.sidebar-gallery {
 
         #footer ul > li {
             display: inline-block;
-            margin-left: 15px;
+            margin-left: 8px;
+			margin-right: 8px;
         }
 
 .item img{
@@ -2410,21 +2411,24 @@ padding:0px
 }
 
 .social {
-    float: right;
+    margin:0.4em 0 0;
 }
 
 .social-share {
-    float: right;
+    
     display: inline;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.content{
+/*.content{
     position:relative;
     padding: 2em
 
+}*/
+.pd1{
+padding: 2em 1em 0em 1em !important;
 }
 
 }
