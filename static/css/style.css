@@ -2385,7 +2385,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 @media(max-width:600px){
 .cont {
-    min-height: 85em; /*Titto*/
+    min-height: 90vh; /*Titto*/
 }
 }
 @media(max-width:568px){
@@ -2852,7 +2852,7 @@ h3.b-animate{
     margin-bottom: 2em;
 }
 .cont {
-    min-height: 145em;
+    min-height: 90vh;
 }
 .footer {
     background: #141414;
