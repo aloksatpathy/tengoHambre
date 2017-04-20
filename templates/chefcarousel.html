@@ -10,7 +10,7 @@
   {% for row in chef_list %}
       <div class="col-md-3">
           <div class="img-rounded" style="margin:30px;"> 
-              <img src="{{ row[2] }}" id="Chefprofile" alt="Chef" class="well" style="height:100%; width:100%">
+              <a href=" {{ url_for('chefProfile',userID=row[3]) }} "><img src="{{ row[2] }}" id="Chefprofile" alt="Chef" class="well" style="height:100%; width:100%"></a>
                 <div class="caption" id="item1price" style="margin-bottom:25%">
         		        <p style="color:#ffc000 " id="Itemname"><b>{{ row[0] }} {{ row[1] }}</b></p>
                 </div>

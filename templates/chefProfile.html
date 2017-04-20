@@ -22,7 +22,13 @@
                             <i class="glyphicon glyphicon-envelope"></i>{{ row[2] }}
 							</br>
                             <i class="glyphicon glyphicon-phone"></i>{{ row[8] }}
-                          
+                        
+                        {% if session['userID'] == chef[0][10] %}
+                            <div data-toggle="modal" data-target="#deleteProfile-dialog">
+                                <a href="{{ url_for('AddDish') }}"><button type="button" id="MoreItems" class="btn btn-warning"> Delete Profile </button></a>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </div>
                 {% endfor %}
@@ -53,21 +59,22 @@
 <div class="row">
     {% for row in rs %}
           <div class="col-md-3">
-            <div class="img-rounded">
+            <div class="img-rounded"  data-toggle="modal" data-target="#dish-dialog">
               
-                <img src="{{row[1]}}" id="ChefprofileRecipe" alt="salad" class="well" style="height:100%; width:100%">
+                <a href="#"><img src="{{row[1]}}" id="ChefprofileRecipe" alt="salad" class="well" style="height:100%; width:100%"></a>
                 <div class="caption" id="item1price" style="margin-bottom:25%">
         			<p style="color:#ffc000" id="Itemname"><b>{{ row[0] }}</b></p>
                   <p style="color:#ffc000" id="ItemPrice" >Price: ${{ row[2] }}</p>
                 </div>
-              
             </div>
           </div>
     {% endfor %}
 </div>
+    {% if session['userID'] == chef[0][10] %}
     <div class="col-md-12 text-center" style="margin-bottom:5%">
         <a href="{{ url_for('AddDish') }}"><button type="button" id="MoreItems" class="btn btn-warning"> Add Entree</button></a>
     </div>
+    {% endif %}
 </div>
 
 
@@ -80,8 +87,8 @@
 <div class="row">
 {% for row in recipe %}
       <div class="col-md-3">
-        <div class="img-rounded"> 
-            <img src=" {{ row[1] }} " id="ChefprofileRecipe" alt="salad" class="well" style="height:100%; width:100%">
+        <div class="img-rounded"  data-toggle="modal" data-target="#recipe-dialog"> 
+            <a href="#"><img src=" {{ row[1] }} " id="ChefprofileRecipe" alt="salad" class="well" style="height:100%; width:100%"></a>
             <div class="caption" id="item1price" style="margin-bottom:25%">
     		<p style="color:#ffc000 " id="Itemname"><b>{{ row[0] }}</b></p>
             </div>
@@ -89,11 +96,235 @@
       </div>
 {% endfor %}
 
+    {% if session['userID'] == chef[0][10] %}
+        <div class="col-md-12 text-center" style="margin:3% 0%">
+            <button type="button" class="btn btn-warning"> Add Recipes </button>
+        </div>
+    {% endif %}
+</div>
+</div>
 
-<div class="col-md-12 text-center" style="margin:3% 0%">
-<button type="button" class="btn btn-warning"> Add  Items </button>
-</div>
-</div>
-</div>
+
+
+
+    <div id="deleteProfile-dialog" class="modal" title="Delete Profile" style="display: none; padding-top: 10%">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-title m2"  > 
+            <h2 style="color: #ffc000; font-size:180%;"> Delete User </h2> 
+        </div>
+        <div class="modal-header"> 
+            <div class="row">
+              <div class="col-sm-12 col-md-12 center">
+                <h2 style="font-size:150%">Are you sure you want to delete your profile?</h2>
+                <h5><u>Note</u>: All your uploaded dishes and recipes would be lost.</h5>                          
+            </div>           
+        </div> 
+        </div>
+        <div class="center">
+            <a href="{{ url_for('deleteProfile') }}"  class="btn btn-warning" style="margin:0 10% 0 0;">YES</a>
+            <button type="button" class="btn btn-warning" data-dismiss="modal" style="margin:0 0 0 10%;">NO</button> 
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+
+
+
+   <div id="dish-dialog" class="modal " title="Recipe" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-title m2"  > 
+            <h1 style="color: #ffc000"> Dish Name </h1> 
+        </div>
+        <div class="modal-header"> 
+            <div class="row">
+            <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
+                    <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+            </div>
+              <div class="col-sm-8 col-md-8" >
+                <h2> Ingredients:</h2>
+                    <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
+                    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>        
+                    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>   
+                    </div> 
+              </div>
+              <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
+                    <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+              </div>                            
+            </div>               
+        </div> 
+        
+        <div class="modal-body m3" >
+            <h2>Recipe:</h2>
+            <div class="col-sm-12 col-md-12">
+                <div class="well m4">
+                    Method 
+                    Combine the mango cubes and powdered sugar in a mixer and blend till smooth.
+                    Transfer the mixture into a deep bowl, add all the other ingredients, mix well and knead into a soft dough without using any water.
+                    Divide the dough into 20 equal portions.
+                    Roll out each portion of the dough into a 75 mm. (3”) diameter circle.
+                    Heat the oil in a deep non-stick pan and deep-fry, a few puris at a time on a medium flame, till they turn golden brown in colour from all the sides. Drain on an absorbent paper.
+                    Serve immediately.
+                    - See more at: https://www.tarladalal.com/Mango-Puri--Aam-Ki-Poori-41686r#sthash.WsaLPhZO.dpuf
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div id="recipe-dialog" class="modal " title="Recipe" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-title m2"  > 
+            <h1 style="color: #ffc000"> Recipe Name </h1> 
+        </div>
+        <div class="modal-header"> 
+            <div class="row">
+            <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
+                    <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+            </div>
+              <div class="col-sm-8 col-md-8" >
+                <h2> Ingredients:</h2>
+                    <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
+                    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>        
+                    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>    <ul class="">
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                        <li>fill ingredients here</li>
+                    </ul>   
+                    </div> 
+              </div>
+              <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
+                    <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+              </div>                            
+            </div>               
+        </div> 
+        
+        <div class="modal-body m3" >
+            <h2>Recipe:</h2>
+            <div class="col-sm-12 col-md-12">
+                <div class="well m4">
+                    Method 
+                    Combine the mango cubes and powdered sugar in a mixer and blend till smooth.
+                    Transfer the mixture into a deep bowl, add all the other ingredients, mix well and knead into a soft dough without using any water.
+                    Divide the dough into 20 equal portions.
+                    Roll out each portion of the dough into a 75 mm. (3”) diameter circle.
+                    Heat the oil in a deep non-stick pan and deep-fry, a few puris at a time on a medium flame, till they turn golden brown in colour from all the sides. Drain on an absorbent paper.
+                    Serve immediately.
+                    - See more at: https://www.tarladalal.com/Mango-Puri--Aam-Ki-Poori-41686r#sthash.WsaLPhZO.dpuf
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+        </div>
+        </div>
+      </div>
+    </div>
 
 {% endblock %}

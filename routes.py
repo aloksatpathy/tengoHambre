@@ -48,7 +48,7 @@ def s3_upload(source_file, upload_dir=None, acl='public-read'):
 	destination_filename = uuid4().hex + source_extension
 
 	# Connect to S3 and upload file.
-	conn = boto.connect_s3('AKIAIR4HCWEV7AXHW2AQ','V16xs6ny0l3P/pzioLEdnUH0FkS/5qdfSjoOqgeZ')
+	conn = boto.connect_s3('','')
 	#conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
 
 
@@ -96,9 +96,21 @@ def signin():
 			if user is not None and passmatch == True:
 				session['email'] = form.email.data
 				session['firstName'] = user.firstName
+
+
+				sql_get_userID="SELECT userID from User WHERE email='%s'" % (session['email'])
+				print(sql_get_userID)
+
+				with engine.connect() as con:
+					rs=con.execute(sql_get_userID)
+
+				userRow=rs.fetchone()
+
+				session['userID'] = userRow[0]
+
 				return redirect(url_for('index'))
 			elif user is None and passmatch==False:
-				flash ("Sorry, the username entered is invalid")
+				flash ("Sorry, the email ID entered is invalid")
 				return redirect(url_for('signin'))
 			elif user is not None and passmatch==False:
 				flash ("Sorry, the password entered is invalid")
@@ -146,6 +158,16 @@ def createUser():
 
 			session['email'] = newuser.email
 			session['firstName'] = newuser.firstName
+
+			sql_get_userID="SELECT userID from User WHERE email='%s'" % (session['email'])
+			print(sql_get_userID)
+
+			with engine.connect() as con:
+				rs=con.execute(sql_get_userID)
+
+			userRow=rs.fetchone()
+
+			session['userID'] = userRow[0]
 			return redirect(url_for('index'))
 
 	elif request.method == 'GET':
@@ -182,26 +204,26 @@ def AddDish():
 
 @app.route("/chefProfile")
 def chefProfile():
-	if 'email' not in session:
-		return redirect(url_for('index'))
+	#if 'email' not in session:
+	#	return redirect(url_for('index'))
+
+	userID = request.args.get('userID', None)
+	print(userID)
 
 	chef_info = []
 	dish_list = []
 	recipe_list = []
 
-	sql_query_chef="SELECT firstName,lastName,email,addressLine1,addressLine2,city,state,zipCode,phoneNumber,imageURL from User where email='%s'"%(session['email'])
+	sql_query_chef="SELECT firstName,lastName,email,addressLine1,addressLine2,city,state,zipCode,phoneNumber,imageURL,userID from User where userID=%s"%(userID)
 	print(sql_query_chef)
 
 	with engine.connect() as con:
 		rs=con.execute(sql_query_chef)
 
-	
 	for row in rs:
 		chef_info.append(row)
 
-
-
-	sql_query_dish="SELECT dishName, imageURL, price FROM Dish WHERE userID=(SELECT userID from User WHERE email='%s')"%(session['email'])
+	sql_query_dish="SELECT dishName, imageURL, price FROM Dish WHERE userID=%s"%(userID)
 	print(sql_query_dish)
 
 	with engine.connect() as con:
@@ -212,7 +234,7 @@ def chefProfile():
 
 
 
-	sql_query_recipe="SELECT recipeName, image FROM Recipes WHERE userID=(SELECT userID from User WHERE email='%s')"%(session['email'])
+	sql_query_recipe="SELECT recipeName, image FROM Recipes WHERE userID=%s"%(userID)
 	print(sql_query_recipe)
 
 	with engine.connect() as con:
@@ -220,7 +242,6 @@ def chefProfile():
 
 	for row in rs:
 		recipe_list.append(row)
-
 
 	return render_template("chefProfile.html", chef=chef_info, rs=dish_list, recipe=recipe_list)
 
@@ -231,7 +252,7 @@ def chefProfile():
 def chefConnect():
 	chef_list = []
 
-	sql_query_chef="SELECT firstName, lastName, imageURL from User"
+	sql_query_chef="SELECT firstName, lastName, imageURL, userID from User"
 	print(sql_query_chef)
 
 	with engine.connect() as con:
@@ -249,12 +270,23 @@ def chefConnect():
 def logout():
 	session.pop('email', None)
 	session.pop('firstName', None)
+	session.pop('userID', None)
 	return redirect(url_for('index'))
 
 @app.route('/contactus')
 def contactus():
-    
     return render_template('Contactus.html')
+
+
+@app.route('/deleteProfile')
+def deleteProfile():
+	sql_query_delete_Profile="DELETE FROM Recipes WHERE userID=(SELECT userID FROM User WHERE email='%s'); DELETE FROM Dish WHERE userID=(SELECT userID FROM User WHERE email='%s'); DELETE FROM User WHERE email='%s';"%(session['email'], session['email'], session['email'])
+	print(sql_query_delete_Profile)
+
+	with engine.connect() as con:
+		rs=con.execute(sql_query_delete_Profile)
+
+	return redirect(url_for('logout'))
 
 
 if __name__ == "__main__":
