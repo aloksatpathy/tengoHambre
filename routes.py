@@ -125,7 +125,7 @@ def signin():
 def recipes():
 	recipes_list = []
 	with engine.connect() as con:
-		rs=con.execute('SELECT recipeName,image  FROM Recipes')
+		rs=con.execute('SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes')
 
 		for row in rs:
 			recipes_list.append(row)
