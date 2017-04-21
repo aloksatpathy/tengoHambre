@@ -7,39 +7,29 @@
 			<!--added on 2/4-->
 			 
 				<div class="carousel-inner row margin2" style="margin:auto">
-					<div class="item col-sm-12 Carouselrow active" data-toggle="modal" data-target="#carousel-dialog"> <a href="#"><img src="static/images/slider/bg1.jpeg" alt="dish" > </a> </div>
-					<div class="item col-sm-12 Carouselrow" data-toggle="modal" data-target="#carousel-dialog"> <a href="#"><img src="static/images/slider/bg2.jpg" alt="dish"> </a> </div>     
-					<div class="item col-sm-12 Carouselrow" data-toggle="modal" data-target="#carousel-dialog"> <a href="#"><img src="static/images/slider/bg3.jpg" alt="dish"> </a> </div>
-					<div class="item col-sm-12 Carouselrow" data-toggle="modal" data-target="#carousel-dialog"> <a href="#"><img src="static/images/slider/bg6.jpeg" alt="dish"> </a> </div>
-					<div class="item col-sm-12 Carouselrow" data-toggle="modal" data-target="#carousel-dialog"> <a href="#"><img src="static/images/slider/bg5.jpeg" alt="dish"> </a> </div>
-					</div>
+				{% set count = [1] %}
+					{% for row in rs%}
+						{% set i=count.pop() %}
+					<div class="item col-sm-12 Carouselrow {% if i ==1 %} active {% endif %}" data-toggle="modal" data-target="#carousel-dialog{{i}}"> <a href="#"><img src="{{ row[1] }}" alt="dish" > </a> </div>
+					{% if count.append(i + 1) %}{% endif %}
+					{% endfor %}
+				</div>
 					<ol class="carousel-indicators hidden-md hidden-lg visible-xs visible-sm">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 						<li data-target="#myCarousel" data-slide-to="1"></li>
 						<li data-target="#myCarousel" data-slide-to="2"></li>
-						<li data-target="#myCarousel" data-slide-to="3"></li>
 					</ol>
 				    <div class="row hidden-xs" id="slider-thumbs">
                         <!-- Bottom switcher of slider -->
                         <ul class="hide-bullets">
-                            <li class="col-sm-2">
-                                <a href="#" class="thumbnail img-fluid" id="carousel-selector-0"> <img src="static/images/slider/bg1.jpeg"> </a>
-                            </li>
-                            <li class="col-sm-2">
-                                <a href="#"  class="thumbnail img-fluid active" id="carousel-selector-1"> <img src="static/images/slider/bg2.jpg"> </a>
-                            </li>                                                   
-                            <li class="col-sm-2">                                   
-                                <a href="#"  class="thumbnail img-fluid" id="carousel-selector-2"> <img src="static/images/slider/bg3.jpeg"> </a>
-                            </li>                                                   
-                            <li class="col-sm-2">                                   
-                                <a href="#"  class="thumbnail img-fluid" id="carousel-selector-3"> <img src="static/images/slider/bg5.jpeg"> </a>
-                            </li>                                                   
-                            <li class="col-sm-2">                                   
-                                <a href="#"  class="thumbnail img-fluid" id="carousel-selector-4"> <img src="static/images/slider/bg6.jpeg"> </a>
-                            </li>
-							<li class="col-sm-2">                                   
-                                <a href="#"  class="thumbnail img-fluid" id="carousel-selector-4"> <img src="static/images/slider/add.png"> </a>
-                            </li>
+						{% set count = [0] %}
+							{% for row in rs%}
+								{% set i=count.pop() %}
+	                            <li class="col-sm-2">
+	                                <a class="thumbnail img-fluid {% if i == 0 %} active {% endif %}" id="carousel-selector-{{ i }}"> <img src="{{ row[1] }}"> </a>
+	                            </li>                                                 
+							{% if count.append(i + 1) %}{% endif %}
+							{% endfor %}
                         </ul>
                     </div>
                         
@@ -55,7 +45,7 @@
 				{% set i=count.pop() %}
 	              <div class="col-md-3">
 	                <div class="img-rounded" style="margin:30px;" data-toggle="modal" data-target="#recipe-dialog{{ i }}"> 
-	                    <a href="#" class="thumbnail img-fluid active"><img src="{{row[1]}}" id="ChefProfileRecipe" class="" alt="salad" style="width:100%"></a>
+	                    <a href="#"><img src="{{row[1]}}" id="ChefProfileRecipe" class="" alt="salad" style="width:100%"></a>
 	                    <div class="caption" id="item4price">
 	                    <p style="color:#ffc000 " id="Itemname"><b>{{ row[0] }}</b></p>
 	                    </div>
@@ -67,46 +57,50 @@
             
 	 </div>      
        
-    
-	<div id="carousel-dialog" class="modal " title="Recipe" style="display: none;">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-        <div class="modal-title m2"  > 
-        	<h1 style="color: #ffc000"> Dish Name </h1> 
-    	</div>
-		<div class="modal-header"> 
-            <div class="row">
-            <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
-              		<img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
-            </div>
-              <div class="col-sm-8 col-md-8" >
-              	<h2> Ingredients:</h2>
-             		<div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
-	              		Ingredients   
-					</div> 
-              </div>
-              <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
-              		<img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
-              </div>	                        
-            </div>               
-        </div> 
-		
-		<div class="modal-body m3" >
-			<h2>Recipe:</h2>
-			<div class="col-sm-12 col-md-12">
-				<div class="well m4">
-					Method					
-				</div>
-			</div>
+    {% set count = [1] %}
+	{% for row in rs%}
+		{% set i=count.pop() %}
+		<div id="carousel-dialog{{ i }}" class="modal " title="Recipe" style="display: none;">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+	        <div class="modal-title m2"  > 
+	        	<h1 style="color: #ffc000"> {{ row[0] }} </h1> 
+	    	</div>
+			<div class="modal-header"> 
+	            <div class="row">
+	            <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
+	              		<img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+	            </div>
+	              <div class="col-sm-8 col-md-8" >
+	              	<h2> Ingredients:</h2>
+	             		<div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
+		              		{{ row[2] }}   
+						</div> 
+	              </div>
+	              <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
+	              		<img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+	              </div>	                        
+	            </div>               
+	        </div> 
 			
-		</div>
+			<div class="modal-body m3" >
+				<h2>Recipe:</h2>
+				<div class="col-sm-12 col-md-12">
+					<div class="well m4">
+						{{ row[3] }}					
+					</div>
+				</div>
+				
+			</div>
 
-        <div class="modal-footer">
-      		<button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
-    	</div>
+	        <div class="modal-footer">
+	      		<button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+	    	</div>
+			</div>
+		  </div>
 		</div>
-	  </div>
-	</div>
+		{% if count.append(i + 1) %}{% endif %}
+	{% endfor %}
 
 
 	{% set count = [1] %}

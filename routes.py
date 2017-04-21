@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, request, session, redirect, url_for, flash
 from flask_wtf import Form
 from models import db, User
-from forms import SigninForm, CreateUserForm, AddDishForm
+from forms import SigninForm, CreateUserForm, AddDishForm, AddRecipeForm
 
 #import os
 import config
@@ -22,6 +22,7 @@ engine = create_engine(connection_string)
 engine.echo=False
 
 
+imageAWS="https://s3-us-west-1.amazonaws.com/tengohambreimages/tengohambre/"
 
 
 
@@ -149,7 +150,6 @@ def createUser():
 		else:
 			output = s3_upload(form.imageURL)
 
-			imageAWS="https://s3-us-west-1.amazonaws.com/tengohambreimages/tengohambre/"
 			imageFullPath = imageAWS + output
 
 			newuser=User(form.firstName.data, form.lastName.data, form.email.data, form.password.data, form.addressLine1.data, form.addressLine2.data, form.city.data, form.state.data, form.zipCode.data, form.country.data, form.phoneNumber.data, imageFullPath)
@@ -187,7 +187,6 @@ def AddDish():
 		else:
 			output = s3_upload(form.imageURL)
 
-			imageAWS="https://s3-us-west-1.amazonaws.com/tengohambreimages/tengohambre/"
 			imageFullPath = imageAWS + output
 
 			sql_query="INSERT INTO Dish (userID, dishName, imageURL, price) VALUES ((SELECT userID FROM User WHERE email='%s'), '%s', '%s', %s)" % (session['email'], form.entreeName.data, imageFullPath, form.price.data)
@@ -196,7 +195,7 @@ def AddDish():
 			with engine.connect() as con:
 				rs=con.execute(sql_query)
 
-			return redirect(url_for('chefProfile'))
+			return redirect(url_for('chefProfile',userID=session['userID']))
 
 	elif request.method == "GET":
 		return render_template("AddDish.html", form=form)
@@ -234,7 +233,7 @@ def chefProfile():
 
 
 
-	sql_query_recipe="SELECT recipeName, image FROM Recipes WHERE userID=%s"%(userID)
+	sql_query_recipe="SELECT recipeName, image, recipeIngredients, recipeDirections FROM Recipes WHERE userID=%s"%(userID)
 	print(sql_query_recipe)
 
 	with engine.connect() as con:
@@ -287,6 +286,40 @@ def deleteProfile():
 		rs=con.execute(sql_query_delete_Profile)
 
 	return redirect(url_for('logout'))
+
+
+@app.route('/addRecipe', methods=["GET", "POST"])
+def addRecipe():
+	if 'email' not in session:
+		return redirect(url_for('index'))
+
+	form = AddRecipeForm()
+
+	if request.method == "POST":
+		if form.validate() == False:
+			return render_template("AddRecipe.html", form=form)
+		else:
+			output = s3_upload(form.imageURL)
+
+			imageFullPath = imageAWS + output
+
+			ingredients=form.ingredients.data
+			ingredients=ingredients.replace('\n', '<br>')
+
+			directions=form.directions.data
+			directions=directions.replace('\n', '<br>')
+
+
+			sql_query="INSERT INTO Recipes (userID, recipeName, recipeIngredients, recipeDirections, image) VALUES (%s, '%s', '%s', '%s', '%s')" % (session['userID'], form.recipeName.data, ingredients, directions, imageFullPath)
+			print(sql_query)
+
+			with engine.connect() as con:
+				rs=con.execute(sql_query)
+
+			return redirect(url_for('chefProfile',userID=session['userID']))
+
+	elif request.method == 'GET':
+		return render_template("AddRecipe.html", form=form)	
 
 
 if __name__ == "__main__":
