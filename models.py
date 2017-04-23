@@ -42,4 +42,8 @@ class User(db.Model):
 		# hash_object=hashlib.sha1(str(password))
 		password_hash = hashlib.sha1(password.encode()).hexdigest()
 		# #return generate_password_hash(password)
-		return self.password==password_hash 
+		return self.password==password_hash
+
+	@classmethod
+	def is_email_taken(cls, email_address):
+		return db.session.query(db.exists().where(User.email==email_address)).scalar()

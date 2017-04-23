@@ -148,27 +148,31 @@ def createUser():
 		if form.validate() == False:
 			return render_template("createUser.html", form=form)
 		else:
-			output = s3_upload(form.imageURL)
+			if User.is_email_taken(form.email.data):
+				flash ("Sorry, the email id is already taken") 
+				return render_template("createUser.html", form=form)
+			else:
+				output = s3_upload(form.imageURL)
 
-			imageFullPath = imageAWS + output
+				imageFullPath = imageAWS + output
 
-			newuser=User(form.firstName.data, form.lastName.data, form.email.data, form.password.data, form.addressLine1.data, form.addressLine2.data, form.city.data, form.state.data, form.zipCode.data, form.country.data, form.phoneNumber.data, imageFullPath)
-			db.session.add(newuser)
-			db.session.commit()
+				newuser=User(form.firstName.data, form.lastName.data, form.email.data, form.password.data, form.addressLine1.data, form.addressLine2.data, form.city.data, form.state.data, form.zipCode.data, form.country.data, form.phoneNumber.data, imageFullPath)
+				db.session.add(newuser)
+				db.session.commit()
 
-			session['email'] = newuser.email
-			session['firstName'] = newuser.firstName
+				session['email'] = newuser.email
+				session['firstName'] = newuser.firstName
 
-			sql_get_userID="SELECT userID from User WHERE email='%s'" % (session['email'])
-			print(sql_get_userID)
+				sql_get_userID="SELECT userID from User WHERE email='%s'" % (session['email'])
+				print(sql_get_userID)
 
-			with engine.connect() as con:
-				rs=con.execute(sql_get_userID)
+				with engine.connect() as con:
+					rs=con.execute(sql_get_userID)
 
-			userRow=rs.fetchone()
+				userRow=rs.fetchone()
 
-			session['userID'] = userRow[0]
-			return redirect(url_for('index'))
+				session['userID'] = userRow[0]
+				return redirect(url_for('index'))
 
 	elif request.method == 'GET':
 		return render_template("createUser.html", form=form)
