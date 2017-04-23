@@ -24,21 +24,21 @@ class CreateUserForm(Form):
 	addressLine2 = StringField('Address Line2', validators=[DataRequired("Please enter your Address Line 2")])
 	city = StringField('City', validators=[DataRequired("Please enter your City"), Length(min=2,max=15,message = "Inappropriate length for city")])
 	state = StringField('City', validators=[DataRequired("Please enter your State"), Length(min=2,max=15,message = "Inappropriate length for state")])
-	zipCode = IntegerField('Zip Code', validators=[DataRequired("Please enter your Zip Code")])
+	zipCode = IntegerField('Zip Code', validators=[DataRequired("Please enter your valid Zip Code")])
 	country = StringField('Country', validators=[DataRequired("Please enter your Country")])
-	phoneNumber = IntegerField('Address Line2', validators=[DataRequired("Please enter your Phone Number")])
-	imageURL = FileField("Example File")
+	phoneNumber = IntegerField('Address Line2', validators=[DataRequired("Please enter your valid Phone Number")])
+	imageURL = FileField("Example File", validators=[DataRequired("Please provide your valid image")])
 	submit = SubmitField("Sign Up")
 
 class AddDishForm(Form):
 	entreeName = StringField('Entree Name', validators=[DataRequired("Please enter the Entree name.")])
 	price = DecimalField('Price in $', validators=[DataRequired("Please enter the price of the Entree.")])
-	imageURL = FileField("Example File")
+	imageURL = FileField("Example File", validators=[DataRequired("Please provide your valid dish image ")])
 	submit = SubmitField("Submit")
 
 class AddRecipeForm(Form):
 	recipeName = StringField('Recipe Name', validators=[DataRequired("Please enter the Recipe name.")])
 	ingredients = TextAreaField('Ingredients', validators=[DataRequired("Please enter the ingredients for the recipe.")])
 	directions = TextAreaField('Directions', validators=[DataRequired("Please enter the directions for the recipe.")])
-	imageURL = FileField("Example File")
+	imageURL = FileField("Example File", validators=[DataRequired("Please provide your valid recipe image")])
 	submit = SubmitField("Submit")

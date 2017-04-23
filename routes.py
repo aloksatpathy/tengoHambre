@@ -49,8 +49,8 @@ def s3_upload(source_file, upload_dir=None, acl='public-read'):
 	destination_filename = uuid4().hex + source_extension
 
 	# Connect to S3 and upload file.
-	conn = boto.connect_s3('','')
-	#conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
+	#conn = boto.connect_s3('','')
+	conn = boto.connect_s3(os.environ.get('AWS_ACCESS_KEY_ID'),os.environ.get('AWS_SECRET_ACCESS_KEY'))
 
 
 	b = conn.get_bucket('tengohambreimages')#os.environ.get('S3_BUCKET')

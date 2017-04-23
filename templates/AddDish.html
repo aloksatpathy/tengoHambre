@@ -35,6 +35,13 @@
                             </div>
 
 
+            <div class="form-group">
+                {% if form.imageURL.errors %}
+                {% for error in form.imageURL.errors %}
+                <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                {% endfor %}
+                {% endif %}
+            </div>
 
             <div class="row">
                   <div class="col-xs-4 col-sm-4 col-md-4">
