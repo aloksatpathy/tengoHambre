@@ -100,7 +100,7 @@
 {% endfor %}
 
     {% if session['userID'] == chef[0][10] %}
-        <div class="col-md-12 text-center" style="margin:3% 0%">
+        <div class="col-md-12 text-center" style="margin-bottom: 5%">
             <a href="{{ url_for('addRecipe') }}"><button type="button" class="btn btn-warning"> Add Recipes </button></a>
         </div>
     {% endif %}
