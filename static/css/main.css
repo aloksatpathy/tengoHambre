@@ -411,7 +411,7 @@ input.search-form {
     background-color: #c52d2f;
     color: #fff;
     display: inline-block;
-    margin-top: -25px;
+    margin-top: -110px;
     height: 40px;
     line-height: 40px;
     width: 40px;
@@ -2362,6 +2362,7 @@ ul.tag-cloud, ul.sidebar-gallery {
 
 .item img{
 width:100% !important;
+max-height: 538px;
 }
 
 #thumbnail img{

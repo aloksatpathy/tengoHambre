@@ -132,7 +132,14 @@ def recipes():
 			recipes_list.append(row)
 			#print(row[2],'\n')
 
-		return render_template("demo.html", rs=recipes_list)
+	carousel_list = []
+	with engine.connect() as con:
+		rs=con.execute('SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes limit 5')
+
+		for row in rs:
+			carousel_list.append(row)
+
+		return render_template("demo.html", rs=recipes_list, cs=carousel_list)
 
 	return render_template("demo.html")
 
