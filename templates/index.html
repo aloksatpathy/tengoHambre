@@ -46,7 +46,7 @@
                     <h2>RECIPES</h2>
                     <div class="col-md-8 men">
                         <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\Snack1.jpg" alt="">
-                            <div class="b-wrapper">
+                            <div class="b-wrapper" data-toggle="modal" data-target="#best-recipe">
                                                 <h3 class="b-animate">
                                                     <span>Best Recipe of the Week</span>
                                                 </h3>
@@ -58,7 +58,7 @@
                     <div class="col-md-4">
                         <div class="col-md1 menup">
                             <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\snack 3.jpg" alt="">
-                                <div class="b-wrapper">
+                                <div class="b-wrapper" data-toggle="modal" data-target="#trending-snack">
                                                 <h3 class="b-animate">
                                                     <span>Trending Snack</span>
                                                 </h3>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-md1 mendw">
                             <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\snack 4.jpg" alt="">
-                                <div class="b-wrapper">
+                                <div class="b-wrapper" data-toggle="modal" data-target="#new-entry">
                                                 <h3 class="b-animate">
                                                     <span>New Entry</span>
                                                 </h3>
@@ -81,8 +81,8 @@
                 <div class="content-top-bottom">
                     <h2>CHEF CONNECT</h2>
                     <div class="col-md-8 men">
-                        <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 3.jpg" alt="">
-                            <div class="b-wrapper" data-toggle="modal" data-target="#best-recipe">
+                        <a href=" {{ url_for('chefProfile',userID=13) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 3.jpg" alt="">
+                            <div class="b-wrapper">
                                                 <h3 class="b-animate">
                                                     <span>Best Chef of the Week</span>
                                                 </h3>
@@ -93,8 +93,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="col-md1 menup">
-                            <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef1.jpg" alt="">
-                                <div class="b-wrapper" data-toggle="modal" data-target="#trending-snack">
+                            <a href=" {{ url_for('chefProfile',userID=15) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef1.jpg" alt="">
+                                <div class="b-wrapper">
                                                 <h3 class="b-animate">
                                                     <span>Trending Chef</span>
                                                 </h3>
@@ -103,8 +103,8 @@
 
                         </div>
                         <div class="col-md1 mendw">
-                            <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 2.jpg" alt="">
-                                <div class="b-wrapper" data-toggle="modal" data-target="#new-entry">
+                            <a href=" {{ url_for('chefProfile',userID=14) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 2.jpg" alt="">
+                                <div class="b-wrapper">
                                                 <h3 class="b-animate">
                                                     <span>New Entry</span>
                                                 </h3>
