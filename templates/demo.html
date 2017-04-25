@@ -74,7 +74,7 @@
 	              <div class="col-sm-8 col-md-8" >
 	              	<h2> Ingredients:</h2>
 	             		<div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
-		              		{{ row[2] }}   
+		              		{{ row[2] | safe   }}   
 						</div> 
 	              </div>
 	              <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
@@ -87,7 +87,7 @@
 				<h2>Recipe:</h2>
 				<div class="col-sm-12 col-md-12">
 					<div class="well m4">
-						{{ row[3] }}					
+						{{ row[3] | safe   }}					
 					</div>
 				</div>
 				
@@ -120,7 +120,7 @@
 	              <div class="col-sm-8 col-md-8" >
 	              	<h2> Ingredients:</h2>
 	             		<div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
-							{{ row[2] | safe  }}
+							{{ row[2] | safe }}
 						</div> 
 	              </div>
 	              <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
@@ -133,7 +133,7 @@
 				<h2>Recipe:</h2>
 				<div class="col-sm-12 col-md-12">
 					<div class="well m4">
-						{{ row[3] | safe  }}					
+						{{ row[3] | safe }}					
 					</div>
 				</div>
 				

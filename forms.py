@@ -22,7 +22,7 @@ class CreateUserForm(Form):
 	password = PasswordField('Password', validators=[DataRequired("Please enter your password."), Length(min=6, message="Password must be 6 characters or more.")])
 	addressLine1 = StringField('Address Line1', validators=[DataRequired("Please enter your Address Line 1")])
 	addressLine2 = StringField('Address Line2', validators=[DataRequired("Please enter your Address Line 2")])
-	city = StringField('City', validators=[DataRequired("Please enter your City"), Length(min=2,max=15,message = "Inappropriate length for city")])
+	city = StringField('City', validators=[DataRequired("Please enter your City"), Length(min=2,max=30,message = "Inappropriate length for city")])
 	state = StringField('City', validators=[DataRequired("Please enter your State"), Length(min=2,max=15,message = "Inappropriate length for state")])
 	zipCode = IntegerField('Zip Code', validators=[DataRequired("Please enter your valid Zip Code")])
 	country = StringField('Country', validators=[DataRequired("Please enter your Country")])

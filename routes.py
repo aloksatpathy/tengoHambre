@@ -134,7 +134,7 @@ def recipes():
 
 	carousel_list = []
 	with engine.connect() as con:
-		rs=con.execute('SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes limit 5')
+		rs=con.execute('SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes limit 6')
 
 		for row in rs:
 			carousel_list.append(row)
