@@ -1,83 +1,93 @@
-{% extends "layout.html" %}
+  {% extends "layout.html" %}
 
-{% block content %} 
-<div class="container">
-        <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-            <div class="panel panel-default">
-                
-                        <div class="panel-body">
-                        <form method="POST" enctype="multipart/form-data" action="/addRecipe">
-                            {{ form.hidden_tag() }}
-                            <div class="form-group">
-                                <label style="color:white;">ADD YOUR RECIPE</label> 
-                            </div>
-
-                            <div class="row">
+  {% block content %} 
+  <div class="container">
+          <div class="row centered-form">
+          <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+              <div class="panel panel-default">
+                  
+                          <div class="panel-body">
+                          <form method="POST" enctype="multipart/form-data" action="/addRecipe">
+                              <!-- Hidden tag added to prevent Cross-Site Request Forgery attacks on the site-->
+                              {{ form.hidden_tag() }}
                               <div class="form-group">
-                                          {% if form.recipeName.errors %}
-                                              {% for error in form.recipeName.errors %}
-                                                  <p class="error-message" style="color: #ffc000;">{{ error }}</p>
-                                              {% endfor %}
-                                          {% endif %}
-
-                                          {{ form.recipeName(class="form-control input-sm", placeholder="Recipe Name") }}
+                                  <label style="color:white;">ADD YOUR RECIPE</label> 
                               </div>
-
-                              <div class="form-group">
-                                          {% if form.ingredients.errors %}
-                                              {% for error in form.ingredients.errors %}
-                                                  <p class="error-message" style="color: #ffc000;">{{ error }}</p>
-                                              {% endfor %}
-                                          {% endif %}
-
-                                          {{ form.ingredients(class="form-control input-sm", placeholder="Ingredients", rows='4') | safe }}
-                              </div>
-
-                              <div class="form-group">
-                                          {% if form.directions.errors %}
-                                              {% for error in form.directions.errors %}
-                                                  <p class="error-message" style="color: #ffc000;">{{ error }}</p>
-                                              {% endfor %}
-                                          {% endif %}
-
-                                          {{ form.directions(class="form-control input-sm", placeholder="Directions", rows='4') | safe }}
-                              </div>
-
-
-                              <div class="form-group">
-                                   {% if form.imageURL.errors %}
-                                   {% for error in form.imageURL.errors %}
-                                   <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
-                                   {% endfor %}
-                                   {% endif %}
-                              </div>
-
 
                               <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                      <div class="form-group">
-                                        <label style="color:white; padding-top: 0.2em;">Upload Img:</label>
+                                <div class="form-group">
+                                            <!-- Display errors in form validation for Recipe Name field -->
+                                            {% if form.recipeName.errors %}
+                                                {% for error in form.recipeName.errors %}
+                                                    <p class="error-message" style="color: #ffc000;">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+
+                                            <!-- Recipe Name input text field -->
+                                            {{ form.recipeName(class="form-control input-sm", placeholder="Recipe Name") }}
+                                </div>
+
+                                <div class="form-group">
+                                            <!-- Display errors in form validation for Ingredients field -->
+                                            {% if form.ingredients.errors %}
+                                                {% for error in form.ingredients.errors %}
+                                                    <p class="error-message" style="color: #ffc000;">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+
+                                            <!-- Ingredients input text field -->
+                                            {{ form.ingredients(class="form-control input-sm", placeholder="Ingredients", rows='4') | safe }}
+                                </div>
+
+                                <div class="form-group">
+                                            <!-- Display errors in form validation for Directions field -->
+                                            {% if form.directions.errors %}
+                                                {% for error in form.directions.errors %}
+                                                    <p class="error-message" style="color: #ffc000;">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+
+                                            <!-- Directions input text field -->
+                                            {{ form.directions(class="form-control input-sm", placeholder="Directions", rows='4') | safe }}
+                                </div>
+
+
+                                <div class="form-group">
+                                     <!-- Display errors in form validation for image URL field -->
+                                     {% if form.imageURL.errors %}
+                                         {% for error in form.imageURL.errors %}
+                                              <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
+                                         {% endfor %}
+                                     {% endif %}
+                                </div>
+
+
+                                <div class="row">
+                                      <div class="col-xs-4 col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                          <label style="color:white; padding-top: 0.2em;">Upload Img:</label>
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div class="col-xs-8 col-sm-8 col-md-8">
-                                      <div class="input-group">
-                                             <span style="color:white;" class="btn btn-file">
-                                              {{ form.imageURL }}
-                                        </span>
+                                      <div class="col-xs-8 col-sm-8 col-md-8">
+                                        <div class="input-group">
+                                               <!-- Button to open window to upload image -->
+                                               <span style="color:white;" class="btn btn-file">
+                                                {{ form.imageURL }}
+                                          </span>
+                                        </div>
                                       </div>
-                                    </div>
-                                <img id='img-upload'/>
+                                  <img id='img-upload'/>
+                                </div>
+
+                                <!-- Submit button -->
+                                <input style="background-color:#EF5F21; border:none;" type="submit" value="Submit" class="btn btn-info btn-block">
+
                               </div>
 
-                              <input style="background-color:#EF5F21; border:none;" type="submit" value="Submit" class="btn btn-info btn-block">
-
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endblock %}
