@@ -1,3 +1,4 @@
+#Commands to import all the necessary flask elements to run our code
 from flask import Flask, render_template, flash, request, session, redirect, url_for, flash
 from flask_wtf import Form
 from models import db, User
@@ -16,6 +17,7 @@ from werkzeug.utils import secure_filename
 
 
 from sqlalchemy import create_engine
+#End of import commands
 
 connection_string='mysql+pymysql://tengohambre:tengohambre@tengohambredb.cwrcnfg5s8qa.us-west-2.rds.amazonaws.com/tengohambreDB'
 engine = create_engine(connection_string)
@@ -28,7 +30,7 @@ imageAWS="https://s3-us-west-1.amazonaws.com/tengohambreimages/tengohambre/"
 
 
 app = Flask(__name__)
-
+#Code that provides the db host name and password necessary for establishing the connection
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://tengohambre:tengohambre@tengohambredb.cwrcnfg5s8qa.us-west-2.rds.amazonaws.com/tengohambreDB'
 db.init_app(app)
 
@@ -37,7 +39,7 @@ app.config.from_object('config')
 app.secret_key = "development-key"
 
 
-
+#Validating the upload directory
 def s3_upload(source_file, upload_dir=None, acl='public-read'):
 	if upload_dir is None:
 		upload_dir = 'tengohambre'
@@ -63,16 +65,17 @@ def s3_upload(source_file, upload_dir=None, acl='public-read'):
 
 
 
-
+#Start of code for Index page
 @app.route("/")
 def index():
 	best_recipe = []
 	with engine.connect() as con:
+		#Code to extract recipe details
 		rs=con.execute("SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes WHERE recipeName='Chicken Salad';")
 
 		for row in rs:
 			best_recipe.append(row)
-
+	#Code to extract trending snack details
 	trending_snack = []
 	with engine.connect() as con:
 		rs=con.execute("SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes WHERE recipeName='Veg Cabbage Soup';")
@@ -88,27 +91,25 @@ def index():
 			new_entry.append(row)
 
 	return render_template("index.html", best_recipe=best_recipe, trending_snack=trending_snack, new_entry=new_entry)
+#End of code for Index page
 
-
-
+#Start of code for Sign in page
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
 	if 'email' in session:
 		return redirect(url_for('index'))
 	
 	form = SigninForm()
-
+#Conditional loop for Post and get methods
 	if request.method == "POST":
+		#Conditional loop for validations
 		if form.validate() == False:
 			return render_template("signin.html", form=form)
 		else:
+			#Code to retrieve the data from the form into local variables
 			email = form.email.data
 			password = form.password.data
-
 			user = User.query.filter_by(email=email).first()
-
-			#print(user.check_password(password))
-			#print(user.firstName)
 
 			if user is None:
 				passmatch = False
@@ -119,7 +120,7 @@ def signin():
 				session['email'] = form.email.data
 				session['firstName'] = user.firstName
 
-
+				#Query to retrieve the users ID from current session
 				sql_get_userID="SELECT userID from User WHERE email='%s'" % (session['email'])
 				print(sql_get_userID)
 
@@ -132,17 +133,21 @@ def signin():
 
 				return redirect(url_for('index'))
 			elif user is None and passmatch==False:
+				#Display flash error message when condition is met
 				flash ("Sorry, the email ID entered is invalid")
 				return redirect(url_for('signin'))
 			elif user is not None and passmatch==False:
+				#Display flash error message when condition is met
 				flash ("Sorry, the password entered is invalid")
 				return redirect(url_for('signin'))
+				#End of conditional loop for validations
 	elif request.method == 'GET':
 		return render_template('signin.html', form=form)
+		#End of conditional loop for Post and get methods
+# End of code for Sign in page
 
 
-
-
+#Start of code for recipes page
 @app.route("/recipes")
 def recipes():
 	recipes_list = []
@@ -152,7 +157,7 @@ def recipes():
 		for row in rs:
 			recipes_list.append(row)
 			#print(row[2],'\n')
-
+	#get the images in the carousel and add the new image to the list
 	carousel_list = []
 	with engine.connect() as con:
 		rs=con.execute('SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes limit 6')
@@ -163,19 +168,23 @@ def recipes():
 		return render_template("demo.html", rs=recipes_list, cs=carousel_list)
 
 	return render_template("demo.html")
+	#End of code for Recipes page
 
-
+#Start of code for Create user page
 @app.route("/createUser", methods=["GET", "POST"])
 def createUser():
+	#Chech if email id entered is in session
 	if 'email' in session:
 		return redirect(url_for('index'))
 
 	form = CreateUserForm()
-
+#Conditional loop for Post and get methods
 	if request.method == "POST":
 		if form.validate() == False:
 			return render_template("createUser.html", form=form)
 		else:
+			#Conditional loop for validations
+			#Check if email id is taken
 			if User.is_email_taken(form.email.data):
 				flash ("Sorry, the email id is already taken") 
 				return render_template("createUser.html", form=form)
@@ -183,14 +192,14 @@ def createUser():
 				output = s3_upload(form.imageURL)
 
 				imageFullPath = imageAWS + output
-
+				#Code to insert the details of new user into the database
 				newuser=User(form.firstName.data, form.lastName.data, form.email.data, form.password.data, form.addressLine1.data, form.addressLine2.data, form.city.data, form.state.data, form.zipCode.data, form.country.data, form.phoneNumber.data, imageFullPath)
 				db.session.add(newuser)
 				db.session.commit()
 
 				session['email'] = newuser.email
 				session['firstName'] = newuser.firstName
-
+				# Query to retrieve user id from current session
 				sql_get_userID="SELECT userID from User WHERE email='%s'" % (session['email'])
 				print(sql_get_userID)
 
@@ -201,11 +210,14 @@ def createUser():
 
 				session['userID'] = userRow[0]
 				return redirect(url_for('index'))
+				#End of conditional loop for validations
 
 	elif request.method == 'GET':
 		return render_template("createUser.html", form=form)
+		#End of conditional loop for Post and get methods
+# End of code for Create user page
 
-
+##Start of code for Add dish page
 @app.route("/AddDish", methods=["GET", "POST"])
 def AddDish():
 	if 'email' not in session:
@@ -231,8 +243,9 @@ def AddDish():
 
 	elif request.method == "GET":
 		return render_template("AddDish.html", form=form)
+#End of code for Add Dish page
 
-
+#Start of code for ChefProfile page
 @app.route("/chefProfile")
 def chefProfile():
 	#if 'email' not in session:
@@ -275,10 +288,10 @@ def chefProfile():
 		recipe_list.append(row)
 
 	return render_template("chefProfile.html", chef=chef_info, rs=dish_list, recipe=recipe_list)
+#End of code for Chef Profile page
 
 
-
-
+#Start of code for Chef Connect page
 @app.route("/chefConnect")
 def chefConnect():
 	chef_list = []
@@ -294,21 +307,24 @@ def chefConnect():
 		print(row)
 
 	return render_template("chefcarousel.html", chef_list=chef_list)
+#End of code for Chef Connect page
 
-
-
+#Start of code for Logout page
 @app.route("/logout")
 def logout():
 	session.pop('email', None)
 	session.pop('firstName', None)
 	session.pop('userID', None)
 	return redirect(url_for('index'))
+	#End of code for Logout page
 
+#Start of code for Contact us page
 @app.route('/contactus')
 def contactus():
     return render_template('Contactus.html')
+#End of code for Contact us page
 
-
+#Start of code for Delete Profile page
 @app.route('/deleteProfile')
 def deleteProfile():
 	sql_query_delete_Profile="DELETE FROM Recipes WHERE userID=(SELECT userID FROM User WHERE email='%s'); DELETE FROM Dish WHERE userID=(SELECT userID FROM User WHERE email='%s'); DELETE FROM User WHERE email='%s';"%(session['email'], session['email'], session['email'])
@@ -318,8 +334,9 @@ def deleteProfile():
 		rs=con.execute(sql_query_delete_Profile)
 
 	return redirect(url_for('logout'))
+#End of code for Delete profile page
 
-
+#Start of code for Add recipe page
 @app.route('/addRecipe', methods=["GET", "POST"])
 def addRecipe():
 	if 'email' not in session:
@@ -352,7 +369,7 @@ def addRecipe():
 
 	elif request.method == 'GET':
 		return render_template("AddRecipe.html", form=form)	
-
+#End of code for Add recipe page
 
 if __name__ == "__main__":
 	app.run(debug=True)

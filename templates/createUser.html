@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 {% block content %} 
+<!--Main Container-->
 <div class="container">
    <div class="row centered-form">
+   <!--Code for grids on different screen sizes-->
       <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
          <div class="panel panel-default">
             <div class="panel-body">
@@ -11,6 +13,7 @@
                      <h3><label style="color:white;">Please enter your details</label> </h3>
                   </div>
                   <div class="row">
+                  <!--Conditional loop for validation error messages-->
                       {% if form.firstName.errors and form.lastName.errors %}
                       {% for error in form.firstName.errors %}
                      <p class="error-message " style="color: #ffc000; margin-left: 5%;"><span>{{ error }}</span></p>
@@ -27,6 +30,8 @@
                      {% endfor %}
                      {% endif %}
                      {% endif %}
+                     <!--End of conditional loop for validation error messages-->
+                     <!--Code to contain First name amd Last name in one row-->
                      <div class="col-xs-6 col-sm-6 col-md-6">
                         <div class="form-group">
                            {{ form.firstName(class="form-control input-sm", placeholder="First Name") }}
@@ -39,11 +44,14 @@
                      </div>
                   </div>
                   <div class="form-group">
+                  <!--Error validation for email-->
                      {% if form.email.errors %}
                      {% for error in form.email.errors %}
                      <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
                      {% endfor %}
                      {% endif %}
+                     <!--End of error validation for email-->
+                     <!--Flash messages for email id which indicate validation errors-->
                       {% with messages = get_flashed_messages() %}
                      {% if messages %}
                      <div class=flashes>
@@ -55,30 +63,18 @@
                      {% endwith %}
                      {{ form.email(class="form-control input-sm", placeholder="Email ID") }}
                   </div>
+                  <!--Code for password field-->
                   <div class="form-group">
+                  <!--Error validation for password-->
                      {% if form.password.errors %}
                      {% for error in form.password.errors %}
                      <p class="error-message " style="color: #ffc000;"><span>{{ error }}</span></p>
                      {% endfor %}
                      {% endif %}
+                     <!--End of error validation for password-->
                      {{ form.password(class="form-control input-sm", placeholder="Password") }}
                   </div>
-                  <!--
-                  <div class="row">
-                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <div class="form-group">
-                           <label style="color:white;"">Are you a Chef?</label>
-                        </div>
-                     </div>
-                     <div class="col-xs-6 col-sm-6 col-md-6"> 
-                        <label style="color:white;" class="radio-inline" for="Dinner-0">
-                        <input type="radio" name="Dinner" id="Dinner-0" value="dinner_yes" checked="checked">
-                        Sell Food </label> 
-                        <label style="color:white;" class="radio-inline" for="Dinner-1">
-                        <input type="radio" name="Dinner" id="Dinner-1" value="dinner_no">
-                        No</label>
-                     </div>
-                  </div>-->
+                  <!--Code for Address line 1 field-->
                   <div class="form-group">
                      {% if form.addressLine1.errors %}
                      {% for error in form.addressLine1.errors %}
@@ -87,6 +83,7 @@
                      {% endif %}
                      {{ form.addressLine1(class="form-control input-sm", placeholder="Address Line 1") }}
                   </div>
+                  <!--Code for Address line 2 field-->
                   <div class="form-group">
                      {% if form.addressLine2.errors %}
                      {% for error in form.addressLine2.errors %}
@@ -95,6 +92,7 @@
                      {% endif %}
                      {{ form.addressLine2(class="form-control input-sm", placeholder="Address Line 2") }}
                   </div>
+                  <!--Code for city field-->
                   <div class="form-group">
                      {% if form.city.errors %}
                      {% for error in form.city.errors %}
@@ -103,6 +101,7 @@
                      {% endif %}
                      {{ form.city(class="form-control input-sm", placeholder="City") }}
                   </div>
+                  <!--Code for State field-->
                   <div class="form-group">
                      {% if form.state.errors %}
                      {% for error in form.state.errors %}
@@ -111,6 +110,7 @@
                      {% endif %}
                      {{ form.state(class="form-control input-sm", placeholder="State") }}
                   </div>
+                  <!--Code for Zip Code field-->
                   <div class="form-group">
                      {% if form.zipCode.errors %}
                      {% for error in form.zipCode.errors %}
@@ -119,6 +119,7 @@
                      {% endif %}
                      {{ form.zipCode(class="form-control input-sm", placeholder="Zip Code") }}
                   </div>
+                  <!--Code for Country field-->
                   <div class="form-group">
                      {% if form.country.errors %}
                      {% for error in form.country.errors %}
@@ -127,6 +128,7 @@
                      {% endif %}
                      {{ form.country(class="form-control input-sm", placeholder="Country") }}
                   </div>
+                  <!--Code for Phone Numberfield-->
                   <div class="form-group">
                      {% if form.phoneNumber.errors %}
                      {% for error in form.phoneNumber.errors %}
@@ -135,6 +137,7 @@
                      {% endif %}
                      {{ form.phoneNumber(class="form-control input-sm", placeholder="Phone Number: 1234567890") }}
                   </div>
+                  <!--Code for Upload image field-->
                   <div class="form-group">
                        {% if form.imageURL.errors %}
                        {% for error in form.imageURL.errors %}
@@ -149,6 +152,7 @@
                         </div>
                      </div>
                      <div class="col-xs-8 col-sm-8 col-md-8">
+                     <!--Code for Submit button field-->
                         <div class="input-group">
                            <span style="color:white;" class="btn btn-file">
                            {{ form.imageURL }}
@@ -164,56 +168,4 @@
       </div>
    </div>
 </div>
-<!--
-   <div id="FullName">
-       <label for="FirstName">FirstName:</label>
-       <label for="LastName">LastName:</label><br>
-       
-       <input type="text" name="FirstName" class="FirstName" />
-       <input type="text" name="LastName" class="LastName" /><br>
-   </div>
-   <div id="Email">
-       <label for="Email">Email Id:</label><br>
-       <input type="email" name="email-address"><br>
-       <label for="Email">Enter your password:</label><br>
-       <input type="email" name="email-address">
-   </div>
-   <label for="Chef">Are you a Chef?</label>
-   <input type="radio" name="Food" value="Food"><span style="font-family:Verdana, Geneva, sans-serif; font-size:1.3em;"> Sell Food</span>
-   <input style="position:relative; right: 15%;"type="radio" name="Food" value="Food"><span style="font-family:Verdana, Geneva, sans-serif; font-size:1.3em;position:relative; right: 15%;"> No</span>
-   </form>     
-   <div style="clear: both;"></div>
-   </div>
-   <img src="images/goku1.png" alt="Goku Welcoming" style="width:40%;height:40%; float:left;">
-   <div id="Address-area">
-       <label for="Address">Address Line 1:</label><br>
-       <input type="text" name="Address-1"><br>
-       <label for="Address2">Address Line 2:</label><br>
-       <input type="text" name="Address-2"><br>
-       <label style="padding-right:15%;" for="City">City:</label>
-       <label for="State">State/Province:</label><br>
-       <input style="width:15%;margin-right:2%;" type="text" name="City">
-       <select name="State">
-       <option value="Texas" selected>Texas</option>
-       <option value="California">California</option>
-       <option value="New York">New York</option>
-       </select> <br>
-       <label style="padding-right:8%;" for="Zip">Postal Code:</label>
-       <label for="Country">Country:</label><br>
-       <input style="width:15%;margin-right:2%;" type="tel" name="Zip">
-       <select name="Country">
-       <option value="United States" selected>United States</option>
-       <option value="Brazil">Brazil</option>
-       <option value="India">India</option>
-       </select> <br>
-       <label for="Phone">Phone Number:</label><br>
-       <input style="width:5%" type="tel" name="Phone">
-       <span><b> --- </b></Span>
-       <input style="width:15%; margin: 0px 0px 0px 0px" type="tel" name="Phone"><br>
-       <label style="margin: 0px 0px 2% 44%;" for="Phone">Upload Image:</label><br>
-       <input style="margin: 0px 0px 2% 44%;" type="file" name="fileToUpload" id="fileToUpload">
-   </div>
-   <div id="Submit">
-   <input type="submit" name="submit" value="Submit" class="submit-button" />
-   </div> -->
 {% endblock %}
