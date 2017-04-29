@@ -66,7 +66,28 @@ def s3_upload(source_file, upload_dir=None, acl='public-read'):
 
 @app.route("/")
 def index():
-	return render_template("index.html")
+	best_recipe = []
+	with engine.connect() as con:
+		rs=con.execute("SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes WHERE recipeName='Chicken Salad';")
+
+		for row in rs:
+			best_recipe.append(row)
+
+	trending_snack = []
+	with engine.connect() as con:
+		rs=con.execute("SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes WHERE recipeName='Veg Cabbage Soup';")
+
+		for row in rs:
+			trending_snack.append(row)
+
+	new_entry = []
+	with engine.connect() as con:
+		rs=con.execute("SELECT recipeName,image,recipeIngredients,recipeDirections FROM Recipes WHERE recipeName='Baked Homemade Macaroni and Cheese';")
+
+		for row in rs:
+			new_entry.append(row)
+
+	return render_template("index.html", best_recipe=best_recipe, trending_snack=trending_snack, new_entry=new_entry)
 
 
 

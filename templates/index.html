@@ -1,256 +1,256 @@
-{% extends "layout.html" %}
+    {% extends "layout.html" %}
 
-{% block content %}
-     <div class="header-end">
-            <div class="container">
-                <div id="myCarousel" class="carousel slide content" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                  </ol>
+    {% block content %}
+         <div class="header-end">
+                <div class="container">
+                    <div id="myCarousel" class="carousel slide content" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                      </ol>
 
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img src="static/images/slider/Image2.jpg" alt="...">
-                        <div class="carousel-caption car-re-posn">
-                             
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="static/images/slider/Image2.jpg" alt="...">
+                            <div class="carousel-caption car-re-posn">
+                                 
+                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                      <img src="static/images/slider/image1.jpg" alt="...">
-                        <div class="carousel-caption car-re-posn">
-                          
+                        <div class="item">
+                          <img src="static/images/slider/image1.jpg" alt="...">
+                            <div class="carousel-caption car-re-posn">
+                              
+                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                      <img src="static/images/slider/image4.jpg" alt="...">
-                        <div class="carousel-caption car-re-posn">
-                            
+                        <div class="item">
+                          <img src="static/images/slider/image4.jpg" alt="...">
+                            <div class="carousel-caption car-re-posn">
+                                
+                            </div>
                         </div>
-                    </div>
-                  </div>
+                      </div>
 
-                  <!-- Controls -->
-                                  </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <!--content-->
-    <div class="container">
-        <div class="cont">
-            <div class="content" style="padding-top: 0">
-                <div class="content-top-bottom" >
-                    <h2>RECIPES</h2>
-                    <div class="col-md-8 men">
-                        <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\Snack1.jpg" alt="">
-                            <div class="b-wrapper" data-toggle="modal" data-target="#best-recipe">
-                                                <h3 class="b-animate">
-                                                    <span>Best Recipe of the Week</span>
-                                                </h3>
-                                            </div>
-                        </a>
-
-
-                    </div>
-                    <div class="col-md-4">
-                        <div class="col-md1 menup">
-                            <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\snack 3.jpg" alt="">
-                                <div class="b-wrapper" data-toggle="modal" data-target="#trending-snack">
-                                                <h3 class="b-animate">
-                                                    <span>Trending Snack</span>
-                                                </h3>
-                                            </div>
-                            </a>
-
-                        </div>
-                        <div class="col-md1 mendw">
-                            <a href="Recipe.html" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\snack 4.jpg" alt="">
-                                <div class="b-wrapper" data-toggle="modal" data-target="#new-entry">
-                                                <h3 class="b-animate">
-                                                    <span>New Entry</span>
-                                                </h3>
-                                            </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="clearfix"> </div>
+                      <!-- Controls -->
+                                      </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="content-top-bottom">
-                    <h2>CHEF CONNECT</h2>
-                    <div class="col-md-8 men">
-                        <a href=" {{ url_for('chefProfile',userID=13) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 3.jpg" alt="">
-                            <div class="b-wrapper">
-                                                <h3 class="b-animate">
-                                                    <span>Best Chef of the Week</span>
-                                                </h3>
-                                            </div>
-                        </a>
+            </div>
+            <!--content-->
+        <div class="container">
+            <div class="cont">
+                <div class="content" style="padding-top: 0">
+                    <div class="content-top-bottom" >
+                        <h2>RECIPES</h2>
+                        <div class="col-md-8 men">
+                            <a href="#" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\Snack1.jpg" alt="">
+                                <div class="b-wrapper" data-toggle="modal" data-target="#best-recipe">
+                                                    <h3 class="b-animate">
+                                                        <span>Best Recipe of the Week</span>
+                                                    </h3>
+                                                </div>
+                            </a>
 
 
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md1 menup">
+                                <a href="#" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\snack 3.jpg" alt="">
+                                    <div class="b-wrapper" data-toggle="modal" data-target="#trending-snack">
+                                                    <h3 class="b-animate">
+                                                        <span>Trending Snack</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+
+                            </div>
+                            <div class="col-md1 mendw">
+                                <a href="#" class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\snack 4.jpg" alt="">
+                                    <div class="b-wrapper" data-toggle="modal" data-target="#new-entry">
+                                                    <h3 class="b-animate">
+                                                        <span>New Entry</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="col-md1 menup">
-                            <a href=" {{ url_for('chefProfile',userID=15) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef1.jpg" alt="">
+                    <div class="content-top-bottom">
+                        <h2>CHEF CONNECT</h2>
+                        <div class="col-md-8 men">
+                            <a href=" {{ url_for('chefProfile',userID=13) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 3.jpg" alt="">
                                 <div class="b-wrapper">
-                                                <h3 class="b-animate">
-                                                    <span>Trending Chef</span>
-                                                </h3>
-                                            </div>
+                                                    <h3 class="b-animate">
+                                                        <span>Best Chef of the Week</span>
+                                                    </h3>
+                                                </div>
                             </a>
 
+
                         </div>
-                        <div class="col-md1 mendw">
-                            <a href=" {{ url_for('chefProfile',userID=14) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 2.jpg" alt="">
-                                <div class="b-wrapper">
-                                                <h3 class="b-animate">
-                                                    <span>New Entry</span>
-                                                </h3>
-                                            </div>
-                            </a>
+                        <div class="col-md-4">
+                            <div class="col-md1 menup">
+                                <a href=" {{ url_for('chefProfile',userID=15) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef1.jpg" alt="">
+                                    <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>Trending Chef</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+
+                            </div>
+                            <div class="col-md1 mendw">
+                                <a href=" {{ url_for('chefProfile',userID=14) }} " class="b-link-stripe b-animate-go"><img class="img-responsive img-rounded" src="static\images\chef 2.jpg" alt="">
+                                    <div class="b-wrapper">
+                                                    <h3 class="b-animate">
+                                                        <span>New Entry</span>
+                                                    </h3>
+                                                </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            
+        </div>
+        </div>
+
+
+
+
+
+        {% for row in best_recipe %}
+            <div id="best-recipe" class="modal " title="Recipe" style="display: none;">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-title m2"  > 
+                    <h1 style="color: #ffc000"> {{ row[0] }} </h1> 
+                </div>
+                <div class="modal-header"> 
+                    <div class="row">
+                    <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
+                            <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+                    </div>
+                      <div class="col-sm-8 col-md-8" >
+                        <h2> Ingredients:</h2>
+                            <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
+                                {{ row[2] | safe }}   
+                            </div> 
+                      </div>
+                      <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
+                            <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+                      </div>                            
+                    </div>               
+                </div> 
+                
+                <div class="modal-body m3" >
+                    <h2>Recipe:</h2>
+                    <div class="col-sm-12 col-md-12">
+                        <div class="well m4">
+                            {{ row[3] | safe }}                    
                         </div>
                     </div>
-                    <div class="clearfix"> </div>
+                    
                 </div>
-            </div>
-        
-    </div>
-    </div>
 
-
-
-
-
-    {% for row in bestrecipe %}
-        <div id="best-recipe" class="modal " title="Recipe" style="display: none;">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-title m2"  > 
-                <h1 style="color: #ffc000"> {{ row[0] }} </h1> 
-            </div>
-            <div class="modal-header"> 
-                <div class="row">
-                <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
-                        <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
                 </div>
-                  <div class="col-sm-8 col-md-8" >
-                    <h2> Ingredients:</h2>
-                        <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
-                            {{ row[2] | safe }}   
-                        </div> 
-                  </div>
-                  <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
-                        <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
-                  </div>                            
-                </div>               
-            </div> 
-            
-            <div class="modal-body m3" >
-                <h2>Recipe:</h2>
-                <div class="col-sm-12 col-md-12">
-                    <div class="well m4">
-                        {{ row[3] | safe }}                    
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+
+
+
+        {% for row in trending_snack %}
+            <div id="trending-snack" class="modal " title="Recipe" style="display: none;">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-title m2"  > 
+                    <h1 style="color: #ffc000"> {{ row[0] }} </h1> 
+                </div>
+                <div class="modal-header"> 
+                    <div class="row">
+                    <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
+                            <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
                     </div>
-                </div>
+                      <div class="col-sm-8 col-md-8" >
+                        <h2> Ingredients:</h2>
+                            <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
+                                {{ row[2] | safe }}   
+                            </div> 
+                      </div>
+                      <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
+                            <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+                      </div>                            
+                    </div>               
+                </div> 
                 
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
-            </div>
-            </div>
-          </div>
-        </div>
-    {% endfor %}
-
-
-
-    {% for row in trendingsnack %}
-        <div id="trending-snack" class="modal " title="Recipe" style="display: none;">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-title m2"  > 
-                <h1 style="color: #ffc000"> {{ row[0] }} </h1> 
-            </div>
-            <div class="modal-header"> 
-                <div class="row">
-                <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
-                        <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
-                </div>
-                  <div class="col-sm-8 col-md-8" >
-                    <h2> Ingredients:</h2>
-                        <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
-                            {{ row[2] | safe }}   
-                        </div> 
-                  </div>
-                  <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
-                        <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
-                  </div>                            
-                </div>               
-            </div> 
-            
-            <div class="modal-body m3" >
-                <h2>Recipe:</h2>
-                <div class="col-sm-12 col-md-12">
-                    <div class="well m4">
-                        {{ row[3] | safe }}                    
+                <div class="modal-body m3" >
+                    <h2>Recipe:</h2>
+                    <div class="col-sm-12 col-md-12">
+                        <div class="well m4">
+                            {{ row[3] | safe }}                    
+                        </div>
                     </div>
+                    
                 </div>
-                
-            </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
-            </div>
-            </div>
-          </div>
-        </div>
-    {% endfor %}
-
-
-
-    {% for row in newentry %}
-        <div id="new-entry" class="modal " title="Recipe" style="display: none;">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-title m2"  > 
-                <h1 style="color: #ffc000"> {{ row[0] }} </h1> 
-            </div>
-            <div class="modal-header"> 
-                <div class="row">
-                <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
-                        <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
                 </div>
-                  <div class="col-sm-8 col-md-8" >
-                    <h2> Ingredients:</h2>
-                        <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
-                            {{ row[2] | safe }}   
-                        </div> 
-                  </div>
-                  <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
-                        <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
-                  </div>                            
-                </div>               
-            </div> 
-            
-            <div class="modal-body m3" >
-                <h2>Recipe:</h2>
-                <div class="col-sm-12 col-md-12">
-                    <div class="well m4">
-                        {{ row[3] | safe }}                    
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+
+
+
+        {% for row in new_entry %}
+            <div id="new-entry" class="modal " title="Recipe" style="display: none;">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-title m2"  > 
+                    <h1 style="color: #ffc000"> {{ row[0] }} </h1> 
+                </div>
+                <div class="modal-header"> 
+                    <div class="row">
+                    <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
+                            <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
                     </div>
-                </div>
+                      <div class="col-sm-8 col-md-8" >
+                        <h2> Ingredients:</h2>
+                            <div class="well" style="max-height: 25vh; min-height: 10vh; overflow-y: auto; overflow-x: hidden;">
+                                {{ row[2] | safe }}   
+                            </div> 
+                      </div>
+                      <div class="col-sm-3 col-xs-3 col-md-4 hidden-xs hidden-sm">
+                            <img src="static/images/images.png" style="width: 100%; height: 100%; position: relative;">
+                      </div>                            
+                    </div>               
+                </div> 
                 
-            </div>
+                <div class="modal-body m3" >
+                    <h2>Recipe:</h2>
+                    <div class="col-sm-12 col-md-12">
+                        <div class="well m4">
+                            {{ row[3] | safe }}                    
+                        </div>
+                    </div>
+                    
+                </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+                </div>
+                </div>
+              </div>
             </div>
-            </div>
-          </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
 
-{% endblock %}
+    {% endblock %}
