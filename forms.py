@@ -4,11 +4,13 @@ from wtforms.validators import DataRequired, Email, Length, Regexp
 from flask_wtf.file import FileField
 
 
+#Sign in form elements with validators
 class SigninForm(Form):
 	email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Please enter your valid email address.")])
 	password = PasswordField('Password', validators=[DataRequired("Please enter your password.")])
 	submit = SubmitField("Sign in")
 
+#Create user form elements with validators
 class CreateUserForm(Form):
 	firstName = StringField('First Name', validators=[DataRequired("Please enter first name."), Length(min=2,max=25,message = "Inappropriate length for firstname"), Regexp(
          "^[a-zA-Z0-9]*$",
@@ -30,12 +32,14 @@ class CreateUserForm(Form):
 	imageURL = FileField("Example File", validators=[DataRequired("Please provide your valid image")])
 	submit = SubmitField("Sign Up")
 
+#Add Dish form elements with validators
 class AddDishForm(Form):
 	entreeName = StringField('Entree Name', validators=[DataRequired("Please enter the Entree name.")])
 	price = DecimalField('Price in $', validators=[DataRequired("Please enter the price of the Entree.")])
 	imageURL = FileField("Example File", validators=[DataRequired("Please provide your valid dish image ")])
 	submit = SubmitField("Submit")
 
+#Add Recipe form elements with validators
 class AddRecipeForm(Form):
 	recipeName = StringField('Recipe Name', validators=[DataRequired("Please enter the Recipe name.")])
 	ingredients = TextAreaField('Ingredients', validators=[DataRequired("Please enter the ingredients for the recipe.")])

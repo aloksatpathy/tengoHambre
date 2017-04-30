@@ -100,7 +100,7 @@ def signin():
 		return redirect(url_for('index'))
 	
 	form = SigninForm()
-#Conditional loop for Post and get methods
+	#Conditional loop for Post and get methods
 	if request.method == "POST":
 		#Conditional loop for validations
 		if form.validate() == False:

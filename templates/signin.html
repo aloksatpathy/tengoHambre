@@ -1,71 +1,71 @@
-{% extends "layoutwithfixedfooter.html" %}
+    {% extends "layoutwithfixedfooter.html" %}
 
-{% block content %} 
-<!--Main Container-->
-        <div class="container">
-        <div class="row centered-form">
-        <!--Code for grids on different screen sizes-->
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" align="center">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <form method="POST" action="/signin">
-                        {{ form.hidden_tag() }}
-                        <div class="form-group">
-                            <label style="color:white;">Please enter your credentials</label>
-                            {% with messages = get_flashed_messages() %}
-                     {% if messages %}
-                     <!--Flash messages which indicate validation errors-->
-                     <div class=flashes>
-                        {% for message in messages %}
-                        <label style="color:#ffc000; font-size:1.1em; font-family: 'Open Sans',sans-serif; font-weight:normal;">{{ message }}</label>
-                        {% endfor %}
-                     </div>
-                     {% endif %}
-                     {% endwith %}  
-                        </div> 
-<!--Code for capturing email id and displaying
-error messages in case of error-->
-<!--Code for email id field-->
-                        <div class="form-group">
-                        <!--Error validation for email-->
-                                        {% if form.email.errors %}
-                                            {% for error in form.email.errors %}
-                                                <p class="error-message" style="color: #ffc000;">{{ error }}</p>
-                                            {% endfor %}
-                                        {% endif %}
-                                        <!--End of error validation for email-->
-
-                                        {{ form.email(class="form-control input-sm", placeholder="Email ID") }}
-                        </div>
-                        <!--Code for password id field-->
-                        <div class="form-group">
-                        <!--Error validation for password-->
-                                        {% if form.password.errors %}
-                                            {% for error in form.password.errors %}
-                                                <p class="error-message" style="color: #ffc000;">{{ error }}</p>
-                                            {% endfor %}
-                                        {% endif %}
-                                        <!--End of error validation for password-->
-
-                                        {{ form.password(class="form-control input-sm", placeholder="Password") }}
-                        </div>
-                            
-<!--Code for submit button-->
-                        {{ form.submit(class="btn btn-info btn-block", style="background-color:#e36612; border:none;") }}
-
-                        </form>
-                            <!--Code for creating new user button-->
-
+    {% block content %} 
+    <!--Main Container-->
+            <div class="container">
+            <div class="row centered-form">
+            <!--Code for grids on different screen sizes-->
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4" align="center">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form method="POST" action="/signin">
+                            {{ form.hidden_tag() }}
                             <div class="form-group">
-                                <label style="padding-top: 2em; color:white;">Click Create User to create a new profile</label> 
+                                <label style="color:white;">Please enter your credentials</label>
+                        {% with messages = get_flashed_messages() %}
+                             {% if messages %}
+                             <!--Flash messages which indicate validation errors-->
+                             <div class=flashes>
+                                {% for message in messages %}
+                                    <label style="color:#ffc000; font-size:1.1em; font-family: 'Open Sans',sans-serif; font-weight:normal;">{{ message }}</label>
+                                {% endfor %}
+                             </div>
+                             {% endif %}
+                         {% endwith %}  
                             </div> 
-                            <!--Code that links the create user page-->
-                            <a href="{{ url_for('createUser') }}" class="btn btn-info btn-block" style="background-color:#e36612; border:none; color:#fff" type="submit">Create User</a>
+                            <!--Code for capturing email id and displaying
+                            error messages in case of error-->
+                            <!--Code for email id field-->
+                            <div class="form-group">
+                            <!--Error validation for email-->
+                                            {% if form.email.errors %}
+                                                {% for error in form.email.errors %}
+                                                    <p class="error-message" style="color: #ffc000;">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <!--End of error validation for email-->
 
+                                            {{ form.email(class="form-control input-sm", placeholder="Email ID") }}
+                            </div>
+                            <!--Code for password id field-->
+                            <div class="form-group">
+                            <!--Error validation for password-->
+                                            {% if form.password.errors %}
+                                                {% for error in form.password.errors %}
+                                                    <p class="error-message" style="color: #ffc000;">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                            <!--End of error validation for password-->
+
+                                            {{ form.password(class="form-control input-sm", placeholder="Password") }}
+                            </div>
+                                
+                            <!--Code for submit button-->
+                            {{ form.submit(class="btn btn-info btn-block", style="background-color:#e36612; border:none;") }}
+
+                            </form>
+                                <!--Code for creating new user button-->
+
+                                <div class="form-group">
+                                    <label style="padding-top: 2em; color:white;">Click Create User to create a new profile</label> 
+                                </div> 
+                                <!--Code that links the create user page-->
+                                <a href="{{ url_for('createUser') }}" class="btn btn-info btn-block" style="background-color:#e36612; border:none; color:#fff" type="submit">Create User</a>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<!--End of HTMLcode-->
-{% endblock %}
+    <!--End of HTMLcode-->
+    {% endblock %}

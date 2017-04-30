@@ -4,6 +4,7 @@ import hashlib
 
 db = SQLAlchemy()
 
+#User class to interact with User table in database
 class User(db.Model):
 	__tablename__='User'
 	firstName = db.Column(db.String(30))
@@ -19,6 +20,7 @@ class User(db.Model):
 	phoneNumber = db.Column(db.String(30))
 	imageURL = db.Column(db.String(300))
 
+	#Object initiated with parameters
 	def __init__(self, firstName, lastName, email, password, addressLine1, addressLine2, city, state, zipCode, country, phoneNumber, imageURL):
 		self.firstName = firstName.title()
 		self.lastName = lastName.title()
@@ -33,10 +35,12 @@ class User(db.Model):
 		self.phoneNumber = phoneNumber
 		self.imageURL = imageURL
 		
+	#Function to set password hash
 	def set_password(self, password):
 		self.password = hashlib.sha1(password.encode()).hexdigest()
 		# self.password = generate_password_hash(password)
 
+	#Function to check if password hash sent and the password hash stored in database are same
 	def check_password(self, password):
 		# return check_password_hash(self.password, password)
 		# hash_object=hashlib.sha1(str(password))
@@ -44,6 +48,7 @@ class User(db.Model):
 		# #return generate_password_hash(password)
 		return self.password==password_hash
 
+	#method to check if email id exists
 	@classmethod
 	def is_email_taken(cls, email_address):
 		return db.session.query(db.exists().where(User.email==email_address)).scalar()
