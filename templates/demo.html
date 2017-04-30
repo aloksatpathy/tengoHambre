@@ -1,11 +1,13 @@
 ﻿{% extends "layout.html" %}
 
 {% block content %}
+<!--adds background and backup formatting that can be used if any of the container formatting doesn't work due to browser constraints-->
     <div class= "bg-background">
+    <!--Main Container-->
 		<div id="main-slider" class="container margin1" >
+		<!--The container for carousel-->
 			 <div class="carousel slide" id="myCarousel" data-ride="carousel">
-			<!--added on 2/4-->
-			 
+			<!--code for the carousel and to get the top 5 recipes from the database into the carousel-->			 
 				<div class="carousel-inner row margin2" style="margin:auto">
 				{% set count = [1] %}
 					{% for row in cs%}
@@ -13,12 +15,15 @@
 					<div class="item col-sm-12 Carouselrow {% if i ==1 %} active {% endif %}" data-toggle="modal" data-target="#carousel-dialog{{i}}"> <a href="#"><img src="{{ row[1] }}" alt="dish" > </a> </div>
 					{% if count.append(i + 1) %}{% endif %}
 					{% endfor %}
+					<!--thumbnails at the bottom of carousel-->	
 				</div>
+				     <!--For smaller screens small dots are visible instead of thumbnails . The dots are visible only for smaller screens.-->
 					<ol class="carousel-indicators hidden-md hidden-lg visible-xs visible-sm">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 						<li data-target="#myCarousel" data-slide-to="1"></li>
 						<li data-target="#myCarousel" data-slide-to="2"></li>
 					</ol>
+					<!--thumbnails are hidden for smaller screens and are visible only for large screens.-->
 				    <div class="row hidden-sm hidden-xs" id="slider-thumbs">
                         <!-- Bottom switcher of slider -->
                         <ul class="hide-bullets" style="width 100%; margin: 0 auto;">
@@ -32,10 +37,11 @@
 							{% endfor %}
                         </ul>
                     </div>
-                        
-					</div>
+                     </div>
 				<a class="prev hidden-xs" href="#main-slider" data-slide="prev"> <i class="fa fa-chevron-left"> </i> </a> <a class="next hidden-xs" href="#main-slider" data-slide="next"> <i class="fa fa-chevron-right"> </i> </a>
 		</div>
+                     <!-- Bottom switcher of slider -->
+
 		
 		<div class="container">
        
@@ -56,16 +62,17 @@
         	</div>
             
 	 </div>      
-       
+     <!-- A modal is used to diplay the recip when the picture on the carousel ot thumbnails is clicked. -->
     {% set count = [1] %}
 	{% for row in rs%}
 		{% set i=count.pop() %}
 		<div id="carousel-dialog{{ i }}" class="modal " title="Recipe" style="display: none;">
-		  <div class="modal-dialog">
+		    <div class="modal-dialog">
 			<div class="modal-content">
 	        <div class="modal-title m2"  > 
 	        	<h1 style="color: #ffc000"> {{ row[0] }} </h1> 
 	    	</div>
+	    	<!-- The modal header. This is needed to give the title of recipe and is formatted same as all pages in tengohambre -->
 			<div class="modal-header"> 
 	            <div class="row">
 	            <div class="col-sm-4 col-xs-4 col-md-4 visible-xs visible-sm">
@@ -82,7 +89,7 @@
 	              </div>	                        
 	            </div>               
 	        </div> 
-			
+			<!-- The modal body. This loads the ingredients and the recipe for the modal. Both of them are scrollable to adapt to the size given by the users -->
 			<div class="modal-body m3" >
 				<h2>Recipe:</h2>
 				<div class="col-sm-12 col-md-12">
@@ -90,8 +97,8 @@
 						{{ row[3] | safe   }}					
 					</div>
 				</div>
-				
-			</div>
+				</div>
+			<!-- The footer for the modal.This has an OK button to close the recipe. The OK is in yellow color to create a contrast of green and yellow -->
 
 	        <div class="modal-footer">
 	      		<button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
